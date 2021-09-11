@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 12px;
+}
+
+body {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  // gap: 100px;
+}
+
+@import "./scss/variables";
+@import "./scss/navbar";
+@import "./scss/main";
+@import "./scss/posts";
+@import "./scss/footer";
+
+h1 {
+  font-size: 5em;
+  line-height: 100%;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+h3 {
+  font-size: 3em;
+  line-height: 120%;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p {
+  line-height: 180%;
+  font-size: 1em;
+}
+
+a {
+  // text-decoration: none;
+  color: $blue-color;
+  cursor: pointer;
+}
+
+@media screen and (max-width: $mq-computer) {
+
+  h1 {
+    font-size: 3.5em;
+  }
+  
+  h2 {
+    font-size: 4em;
+  }
+  
+  h3 {
+    font-size: 2.625em;
+  }
+  
+  h4 {
+    font-size: 2em;
+  }
+  
+  h6 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: $mq-tablet) {
+
+  h1 {
+    font-size: 2.625em;
+  }
+  
+  h2 {
+    font-size: 4em;
+  }
+  
+  h3 {
+    font-size: 2.25em;
+  }
+  
+  h4 {
+    font-size: 2em;
+  }
+  
+  h6 {
+    font-size: 1em;
+  }
+}
+
+

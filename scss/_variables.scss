@@ -1,0 +1,86 @@
+// Colors
+$blue-color: #2b52d0;
+$gray-color: #404E59;
+
+$mq-phone: 481px;
+$mq-tablet:767px; 
+$mq-computer: 991px;
+$mq-large-screens: 1201px;
+
+// Texts
+
+.paragraph-3 {
+  font-size: 1.5em;
+}
+
+.paragraph-4 {
+  font-size: 1.2em;
+}
+
+.paragraph-5 {
+  font-size: 1em;
+}
+
+.paragraph-6 {
+  font-size: 0.875em;
+}
+
+// Spacers
+
+.spacer-72 {
+  height: 72px;
+  width: 72px;
+}
+
+.spacer-48 {
+  height: 48px;
+  width: 48px;
+}
+
+.spacer-32 {
+  height: 32px;
+  width: 32px;
+}
+
+.spacer-16 {
+  height: 16px;
+  width: 16px;
+}
+
+// Margin / Padding
+
+.margin-b-2x {
+  margin-bottom: 2rem;
+}
+
+// Wrappers
+
+.wrapper-80 {
+  width: 80vw;
+  max-width: 1240px;
+}
+
+.wrapper-60 {
+  width: 60%;
+
+  @media screen and (max-width: $mq-computer) {
+    width: 100%;
+  }
+}
+
+.wrapper-90-mobile {
+  @media screen and (max-width: $mq-tablet) {
+    width: 90vw;
+  }
+}
+
+.width-75 {
+  width: 75%;
+}
+
+
+.hide-desktop {
+  @media screen and (min-width: $mq-tablet) {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "Anycubic Goes Kickstarter for the Photon Ultra – A Budget DLP Printer",
+    "previewImage": "https://i.all3dp.com/cdn-cgi/image/fit=cover,w=1284,h=722,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/08/13132338/Unbenannt-copy.jpg",
+    "timeStamp" : "September 2, 2021",
+    "readTime" : "7 min. read",
+    "shortSummary": "Anycubic is crowdfunding its new budget desktop DLP printer on Kickstarter. All you need to know.",
+    "content": [
+        "<p>Anycubic’s Photon series of resin 3D printers contributed to placing the brand as one of the best-known consumer 3D printer manufacturers. The latest addition to the Photon series is the upcoming Anycubic Photon Ultra, a resin printer first displayed at TCT Asia earlier this year that uses Digital Light Processing (DLP) technology.</p>",
+        "<p>DLP resin printers offer a ton of benefits over LCD 3D printers, but have always been prohibitively expensive, particularly in comparison to the wave of budget LCD printers that recently flooded the market.</p>",
+        "<p>Well, until now, it seems. Having teamed up with Texas Instruments and utilizing its DLP technology, Anycubic is coming to Kickstarter with an affordable, high-precision DLP 3D printer for consumers.</p>",
+        "<p>We have it from Anycubic that the Photon Ultra is making its debut on the crowdfunding website on September 15, 2021, where it will be available at just $399 for the first 100 backers, with $499 being the normal price.</p>",
+        "<p>Is this the Age of Ultra? It certainly comes with some big claims. Read on for a quick overview of the benefits of DLP and all we know about the Anycubic Ultra so far.</p>",
+        "<h4>High precision printing</h4>",
+        "<p></p>",
+       "<p>The race for finer resolution in the budget resin sector is on more than ever before, with the recent releases of the 4K-capable Elegoo Mars 3 or the freakishly large Phrozen Mega 8K. Both of those machines use Masked Stereolithography (MSLA) technology, but Anycubic’s latest contestant is taking a different route, leaving the MSLA racetrack altogether.</p>",
+       "<p> Instead of a screen illuminated by a light source, the Photon Ultra uses a light projector at its core. Although the resolution of the Photon Ultra is rated at 720p (80 microns), Anycubic claims the print quality to be even better than that of 2k/4k monochrome LCD screen printers (50/35 microns).</p>",
+       "<p> While DLP printers are similar to LCD-based masked stereolithography (MSLA) printers in that there are perceivable pixels – and the layer cure times are not dependent on the number of models on the plate – there is one major difference: LCD printers converge all the light to a pixel, which can cause bumps and shadows on the edge of models. Projector-based printers reflect light to a pixel via micromirrors, with little to no light convergence and with the effective “pixel” size being scalable, can achieve crisper black-white contrasts. As such, intricate details, thin lines, and small-size texts come out much clearer on DLP printers (a reason that DLP technology is commonplace in the dental and jewelry industries).</p>",
+       "<img src='https://i.all3dp.com/cdn-cgi/image/fit=cover,w=1000,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/08/13132333/dlp-3d-printer-inl-copy.jpg'>",
+       "<p></p>",
+       "<h4>Cost-efficient and durable</h4>",
+       "<p></p>",
+       "<p>If you have dabbled with LCD-based resin printers before, you will know the screen needs replacing after some time as the pixels deteriorate when exposed to light (~2000 h of use for monochrome screens and ~500 h for non-mono ones). The Photon Ultra does not have an LCD screen, just a plain glass pane. Plus, Anycubic says the internal projector doesn’t require maintenance for 20,000 hours of use. Quick maths, you save a lot of money on maintenance.</p>",
+       "<p> And, according to Anycubic, the Ultra is also much more energy efficient. It uses far less energy all while operating at ten times the light efficiency that LCD-based printers usually operate at. This should go a long way in making 3D printing more environmentally friendly.</p>",
+       "<h4>Fast printing</h4>",
+       "<p></p>",
+       "<p>Over on the LCD side of resin printing, the use of monochrome screens has brought production times way down, with layer cure times anywhere between 1.5 – 2 seconds. The Photon Ultra is no slouch, though, claiming an equally fast layer cure time. According to Anycubic, the Ultra will live up to its name; 1.5 seconds per layer, flat. And unlike MSLA printers which are locked in on 405nm UV-sensitive resin, DLP-printers can adjust the projector’s UV power, which allows it to process a wide variety of resins.</p>",
+       "<p> We haven’t been hands-on with the printer just yet, so we can’t speak to the quality of its hardware, its capabilities, or the validity of Anycubic’s claims in general, but the Photon Ultra has the potential to be quite the industry upset if what’s claimed holds up.</p>",
+       "<p> What do you make of this technology popping up in the budget resin sector? Let us know in the comments below.</p>"
+
+
+     ]
+  }
+   
+ ]
