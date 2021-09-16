@@ -7,42 +7,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <script src="./script.js"></script>
-  <title>PrintersPage | Blog</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://kit.fontawesome.com/5cf4a78028.js" crossorigin="anonymous"></script>
+  <script src="../script.js"></script>
+  <title id="post-title">Document</title>
 </head>
 
-<body onload="getPosts()">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
+<body onload="getPostFromId()" class="posts-body">
   <!-- Navbar -->
   <nav>
     <div class="nav-container wrapper-80 wrapper-90-mobile">
-      <a href="./index.html">
+      <a href="../index.html">
         <h4 class="logo">BonjourBaguette</h4>
       </a>
       <ul>
-        <li><a href="">Blog</a></li>
+        <li><a href="../index.html">Blog</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <div class="container">
-    <h1>The Blog</h1>
-    <div class="row"></div>
-  </div>
+  <main class="container wrapper-80">
 
+    <header class="post-header"></header>
 
+    <!-- Post-content -->
+    <div class="post-body row">
 
-  <!-- Footer -->
+    </div>
+  </main>
+
   <!-- <footer>
     <div class="footer-container wrapper-80 wrapper-90-mobile">
       <div class="newsletter">

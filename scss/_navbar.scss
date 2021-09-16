@@ -6,7 +6,7 @@ nav {
 
   a {
     text-decoration: none;
-    color: #000;
+    color: $gray-color;
   }
 
   .nav-container {
@@ -18,6 +18,10 @@ nav {
 
     .logo {
       font-weight: 100;
+
+      &:hover {
+        color: $gray-color;
+      }
     }
 
     ul {
@@ -46,6 +50,7 @@ nav {
         background-color: $blue-color;
         margin-right: 0;
         color: #fff;
+        border-radius: 50px;
 
         &:hover {
           background-color: #000;

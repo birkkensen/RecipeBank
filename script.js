@@ -1,28 +1,65 @@
-var populatePost = (post) => {
-  document.querySelector('.post-header').innerHTML = `
-  <h6><a href="../index.html">Blog</a></h6>
-  <h3>${post.title}</h3>
-  <div class="spacer-16"></div>
-  <p class="paragraph-4 margin-b-2x">${post.shortSummary}</p>
-  <div class="spacer-16"></div>
-  <!-- Social-media -->
-  <div class="social-media">
-    <p>September 7, 2021 - 5 min. read</p>
-    <div class="spacer-16 hide-desktop"></div>
-    <div class="social-media__icons">
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-github"></i>
-      <i class="fab fa-linkedin"></i>
-    </div>
-  </div>
-  <div class="spacer-32"></div>
-  <img src="${post.previewImage}" alt="Random">
-  <div class="spacer-72"></div>`
+let firstPost = []
 
-  var content = post.content;
+var populatePost = (post) => {
+  const myDate = post.date = new Date()
+  myDate.toISOString().split('T')[0]
+  document.querySelector('.post-header').innerHTML = `
+  <h6>${post._embedded["wp:term"][0][0].name}</h6>
+  <h3>${post.title.rendered}</h3>
+  <div class="spacer-16"></div>
+  <div class="social-media">
+  <p>${formatDate(myDate)}</p>
+  <div>
+  <i class="fas fa-link"></i>
+  <i class="far fa-heart"></i>
+  </div>
+</div>
+<div class="spacer-16"></div>
+  <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="">
+  <p class="paragraph-4 margin-b-2x">${post.excerpt.rendered}</p>
+  <div class="spacer-32"></div>
+  <h5>Ingredienser</h5>
+  <div class="spacer-16"></div>
+  `
+  document.getElementById('post-title').innerText = post.title.rendered;
+
+  var content = post.blocks;
+  // console.log(post.featured_media);
 
   for (i = 0; i < content.length; i++) {
-    document.querySelector('.post-body').innerHTML += content[i];
+    document.querySelector('.post-body').innerHTML += content[i].innerHTML;
+  }
+}
+
+var populateFirstPost = (firstPost) => {
+  const myDate = firstPost.date = new Date()
+  myDate.toISOString().split('T')[0]
+
+  document.querySelector('.post-header').innerHTML = `
+  <h6>${firstPost._embedded["wp:term"][0][0].name}</h6>
+  <h3>${firstPost.title.rendered}</h3>
+  <div class="spacer-16"></div>
+  <div class="social-media">
+  <p>${formatDate(myDate)}</p>
+  <div>
+  <i class="fas fa-link"></i>
+  <i class="far fa-heart"></i>
+  </div>
+</div>
+<div class="spacer-16"></div>
+  <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
+  <p class="paragraph-4 margin-b-2x">${firstPost.excerpt.rendered}</p>
+  <div class="spacer-32"></div>
+  <h5>Ingredienser</h5>
+  <div class="spacer-16"></div>
+  `
+  document.getElementById('post-title').innerText = firstPost.title.rendered;
+
+  var content = firstPost.blocks;
+  // console.log(post.featured_media);
+
+  for (i = 0; i < content.length; i++) {
+    document.querySelector('.post-body').innerHTML += content[i].innerHTML;
   }
 }
 
@@ -33,40 +70,119 @@ var findQuery = (param) => {
 }
 
 var getPosts = () => {
-  fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
+  fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
+  // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
-    for (let i = 0; i < data.length; i++) {
+    firstPost = data[0];
+    createFirstPost(firstPost);
+    for (let i = 1; i < data.length; i++) {
       createArticle(data[i]);
-      console.log(data[i]);
     }
-  });
+  })
+  .catch((error) => {
+    console.log('Error', error);
+  })
 }
 
 var getPostFromId = () => {
   var id = JSON.parse(findQuery('id'));
-
-  fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
+  fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
+  // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
+    firstPost = data[0]
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === id) {
         populatePost(data[i])
-      }
+      } else 
+        populateFirstPost(firstPost)
+        console.log(firstPost)
     }
-  });
+  })
+  .catch((error) => {
+    console.log('Error', error);
+  })
+}
+
+var createFirstPost = (post) => {
+  const myDate = post.date = new Date()
+  myDate.toISOString().split('T')[0]
+  var row = document.querySelector('.row');
+
+  row.innerHTML = `
+  <div class="col-md-6 col-lg-12">
+  <div class="featured-article">
+    <a href="./pages/posts.html?${firstPost.slug}&${post.id}">
+      <div class="row">
+        <div class="col-md-12 col-lg-7">
+          <div class="article-image">
+            <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-5">
+          <div class="article-body">
+            <div class="article-published">${formatDate(myDate)}</div>
+            <div class="featured-title">${firstPost.title.rendered}</div>
+            <div class="featured-description">${firstPost.excerpt.rendered}</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+  `
 }
 
 var createArticle = (post) => {
-  var articleWrapper = document.querySelector('.articles-wrapper');
-  articleWrapper.innerHTML += `<a href="./posts/posts.html?id=${post.id}" class="articles-wrapper__article">
-  <div class="articles-wrapper__article__body">
-    <h4>${post.title}</h4>
-    <br>
-    <p class="paragraph-6">${post.timeStamp} - ${post.readTime}</p>
+  const myDate = post.date = new Date()
+  myDate.toISOString().split('T')[0]
+
+  var row = document.querySelector('.row');
+
+  row.innerHTML += `
+  <div class="col-md-6 col-lg-4">
+  <div class="article">
+    <a href="./pages/posts.html?${post.slug}&id=${post.id}">
+      <div class="article-image">
+        <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="">
+      </div>
+      <div class="article-body">
+        <div class="article-published">${formatDate(myDate)}</div>
+        <div class="article-title">${post.title.rendered}</div>
+        <div class="article-description">${post.excerpt.rendered}</div>
+      </div>
+    </a>
   </div>
-  <div class="spacer-16 hide-desktop"></div>
-  <img class="articles-wrapper__article__image" src="${post.previewImage}"
-    alt="Random">
-</a>`;
+</div>
+  `
+//   articleWrapper.innerHTML += `
+//   <a href="./pages/posts.html?${post.slug}&id=${post.id}" class="articles-wrapper__article">
+//   <div class="articles-wrapper__article__body">
+//   <img class="articles-wrapper__article__image" src="${post._embedded["wp:featuredmedia"][0].source_url}"
+//     alt="Random">
+//     <div class="test">
+//     <h6>${formatDate(myDate)}</h6>
+//     <br>
+//     <h5>${post.title.rendered}</h5>
+//     <br>
+//     <p>${post.excerpt.rendered}</p>
+//     <br>
+//     </div>
+//   </div>
+// </a>`;
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
