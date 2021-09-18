@@ -13,7 +13,7 @@
   <title id="post-title">Document</title>
 </head>
 
-<body onload="getPostFromId()" class="posts-body">
+<body onload="getPostFromId()">
   <!-- Navbar -->
   <nav>
     <div class="nav-container wrapper-80 wrapper-90-mobile">
@@ -21,22 +21,28 @@
         <h4 class="logo">BonjourBaguette</h4>
       </a>
       <ul>
-        <li><a href="../index.html">Blog</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
+        <a href="">
+          <li>Blog</li>
+        </a>
+        <a href="">
+          <li>About</li>
+        </a>
+        <a href="">
+          <li>Contact</li>
+        </a>
       </ul>
     </div>
   </nav>
 
-  <main class="container wrapper-80">
+  <div class="container wrapper-80 wrapper-90-mobile">
+    <div class="row">
 
-    <header class="post-header"></header>
+      <header class="post-header wrapper-lg-60"></header>
 
-    <!-- Post-content -->
-    <div class="post-body row">
-
+      <!-- Post-content -->
+      <div class="post-body row"></div>
     </div>
-  </main>
+  </div>
 
   <!-- <footer>
     <div class="footer-container wrapper-80 wrapper-90-mobile">

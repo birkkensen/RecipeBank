@@ -9,6 +9,8 @@ $mq-tablet:767px;
 $mq-computer: 991px;
 $mq-large-screens: 1201px;
 
+
+
 // Texts
 
 .paragraph-3 {
@@ -66,10 +68,16 @@ $mq-large-screens: 1201px;
   max-width: 1240px;
 }
 
-.wrapper-60 {
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper-lg-60 {
   width: 60%;
 
-  @media screen and (max-width: $mq-tablet) {
+  @media screen and (max-width: $mq-computer) {
     width: 100%;
   }
 }

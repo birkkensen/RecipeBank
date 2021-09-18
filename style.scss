@@ -21,10 +21,11 @@ body {
   // flex-direction: column;
   // align-items: center;
   color: $black-color;
-  background-color: #E3E6EC;
+  background-color: white;
+  // background-color: #E3E6EC;
   // background-image: url('https://www.dwinawan.com/blog/bgcircle.svg');
-  background-position: top center;
-  background-repeat: no-repeat;
+  // background-position: top center;
+  // background-repeat: no-repeat;
 }
 
 
@@ -61,7 +62,8 @@ p {
 
 a {
   // text-decoration: none;
-  color: $red-ish-color;
+  // color: $red-ish-color;
+  color: inherit;
   cursor: pointer;
 }
 

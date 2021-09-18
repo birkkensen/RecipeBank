@@ -1,6 +1,8 @@
+
+
 .post-header img, .post-body img {
   width: 100%;
-  max-height: 460px;
+  // max-height: 460px;
   border-radius: 8px;
 }
 
@@ -26,52 +28,91 @@
 }
 
 .post-body {
-  padding-bottom: 7vw;
 
-  h4, h5 {
-    margin-bottom: 24px;
+  ul, ol {
+    font-size: 1.2em;
   }
 
-  p {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
 
   ul {
     list-style: none;
+    // margin-right: 48px;
    
-    
+    li:first-child {
+      list-style: none;
+      background-color: transparent;
+      font-size: 1.5em;
+      padding: 16px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      &::before {
+        content: '';
+      }
+    }
+    li::before {
+      content: '•';
+      color: $red-ish-color;
+      padding-right: 10px;
+    }
     li {
-      background-color: darkgreen;
-      margin-top: 5px;
-      margin-bottom: 5px;
+      // background-color: white;
+      padding: 12px 24px;
+      margin-top: 4px;
+      border-radius: 4px;
+    }
+    .styling {
+      font-size: 1.1em;
+      
+      &::before {
+        content: '';
+      }
     }
   }
 
-  // table {
-  //   width: 75%;
+  ol {
+    list-style-type: none;
+    counter-reset: section -1;
 
-  //   @media screen and (max-width: $mq-tablet) {
-  //     width: 100%;
-  //   }
-  //   border-collapse: collapse;
-  //   margin-bottom: 20px;
+    li:first-child {
+      background-color: transparent;
+      font-size: 1.5em;
+      &::before {
+        content: '';
+      }
+    }
+    li {
+      padding: 16px;
+      // background-color: white;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
 
-  //   tbody {
-  //   display: table-row-group;
-  //   vertical-align: middle;
-  //   }
+    li::before {
+      counter-increment: section;
+      content: counters(section, ".") " "; 
+      padding-right: 5px;
+      font-weight: bold;
+      font-size: 20px;
+      color: $red-ish-color;
+      // position: absolute;
+    }
+  }
 
-  //   tr {
-  //     display: table-row;
-  //     border-bottom: lightgray 1px solid;
-  //   }
-  //   td {
-  //     vertical-align: top;
-  //     padding: 13px;
-      
-  //   }
-  // }
-
+  @media screen and (max-width: 991px) {
+    ol, ul {
+      width: 75%;
+      li {
+        font-size: 1.2em;
+      }
+    }
+  }
+  @media screen and (max-width: 576px) {
+    ol, ul {
+      width: 100%;
+      li {
+        font-size: 1em;
+      }
+    }
+  }
 }
 

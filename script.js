@@ -1,4 +1,4 @@
-let firstPost = []
+let featuredPost = []
 
 var populatePost = (post) => {
   const myDate = post.date = new Date()
@@ -18,50 +18,64 @@ var populatePost = (post) => {
   <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="">
   <p class="paragraph-4 margin-b-2x">${post.excerpt.rendered}</p>
   <div class="spacer-32"></div>
-  <h5>Ingredienser</h5>
   <div class="spacer-16"></div>
   `
-  document.getElementById('post-title').innerText = post.title.rendered;
 
   var content = post.blocks;
   // console.log(post.featured_media);
 
   for (i = 0; i < content.length; i++) {
     document.querySelector('.post-body').innerHTML += content[i].innerHTML;
+    
   }
+
+  let ul = document.querySelectorAll('.post-body ul')
+  let ol = document.querySelectorAll('.post-body ol')
+  let instruction = document.querySelector('.post-body ul')
+  let allChildren = instruction.querySelectorAll('li');
+
+  for (let i = 0; i < allChildren.length; i++) {
+    if (allChildren[i].childElementCount >= 1) {
+      allChildren[i].classList.add('styling');
+    }
+  }
+
+  ul.forEach(item => item.classList.add('col-sm-12'))
+  ul.forEach(item => item.classList.add('col-lg-5'))
+  ol.forEach(item => item.classList.add('col-sm-12'));
+  ol.forEach(item => item.classList.add('col-lg-6'));
 }
 
-var populateFirstPost = (firstPost) => {
-  const myDate = firstPost.date = new Date()
-  myDate.toISOString().split('T')[0]
+// var populateFirstPost = (firstPost) => {
+//   const myDate = firstPost.date = new Date()
+//   myDate.toISOString().split('T')[0]
 
-  document.querySelector('.post-header').innerHTML = `
-  <h6>${firstPost._embedded["wp:term"][0][0].name}</h6>
-  <h3>${firstPost.title.rendered}</h3>
-  <div class="spacer-16"></div>
-  <div class="social-media">
-  <p>${formatDate(myDate)}</p>
-  <div>
-  <i class="fas fa-link"></i>
-  <i class="far fa-heart"></i>
-  </div>
-</div>
-<div class="spacer-16"></div>
-  <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
-  <p class="paragraph-4 margin-b-2x">${firstPost.excerpt.rendered}</p>
-  <div class="spacer-32"></div>
-  <h5>Ingredienser</h5>
-  <div class="spacer-16"></div>
-  `
-  document.getElementById('post-title').innerText = firstPost.title.rendered;
+//   document.querySelector('.post-header').innerHTML = `
+//   <h6>${firstPost._embedded["wp:term"][0][0].name}</h6>
+//   <h3>${firstPost.title.rendered}</h3>
+//   <div class="spacer-16"></div>
+//   <div class="social-media">
+//   <p>${formatDate(myDate)}</p>
+//   <div>
+//   <i class="fas fa-link"></i>
+//   <i class="far fa-heart"></i>
+//   </div>
+// </div>
+// <div class="spacer-16"></div>
+//   <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
+//   <p class="paragraph-4 margin-b-2x">${firstPost.excerpt.rendered}</p>
+//   <div class="spacer-32"></div>
+//   <div class="spacer-16"></div>
+//   `
+//   document.getElementById('post-title').innerText = firstPost.title.rendered;
 
-  var content = firstPost.blocks;
-  // console.log(post.featured_media);
+//   var content = firstPost.blocks;
+//   // console.log(post.featured_media);
 
-  for (i = 0; i < content.length; i++) {
-    document.querySelector('.post-body').innerHTML += content[i].innerHTML;
-  }
-}
+//   for (i = 0; i < content.length; i++) {
+//     document.querySelector('.post-body').innerHTML += content[i].innerHTML;
+//   }
+// }
 
 
 var findQuery = (param) => {
@@ -74,8 +88,8 @@ var getPosts = () => {
   // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
-    firstPost = data[0];
-    createFirstPost(firstPost);
+    featuredPost = data[0];
+    createFeaturedPost(featuredPost);
     for (let i = 1; i < data.length; i++) {
       createArticle(data[i]);
     }
@@ -91,13 +105,12 @@ var getPostFromId = () => {
   // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
-    firstPost = data[0]
+    featuredPost = data[0]
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === id) {
         populatePost(data[i])
-      } else 
-        populateFirstPost(firstPost)
-        console.log(firstPost)
+      } 
+       
     }
   })
   .catch((error) => {
@@ -105,7 +118,7 @@ var getPostFromId = () => {
   })
 }
 
-var createFirstPost = (post) => {
+var createFeaturedPost = (post) => {
   const myDate = post.date = new Date()
   myDate.toISOString().split('T')[0]
   var row = document.querySelector('.row');
@@ -113,18 +126,18 @@ var createFirstPost = (post) => {
   row.innerHTML = `
   <div class="col-md-6 col-lg-12">
   <div class="featured-article">
-    <a href="./pages/posts.html?${firstPost.slug}&${post.id}">
+    <a href="./pages/posts.html?${featuredPost.slug}&id=${post.id}">
       <div class="row">
         <div class="col-md-12 col-lg-7">
           <div class="article-image">
-            <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
+            <img src="${featuredPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
           </div>
         </div>
         <div class="col-md-12 col-lg-5">
           <div class="article-body">
             <div class="article-published">${formatDate(myDate)}</div>
-            <div class="featured-title">${firstPost.title.rendered}</div>
-            <div class="featured-description">${firstPost.excerpt.rendered}</div>
+            <div class="featured-title">${featuredPost.title.rendered}</div>
+            <div class="featured-description">${featuredPost.excerpt.rendered}</div>
           </div>
         </div>
       </div>
