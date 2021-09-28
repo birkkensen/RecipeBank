@@ -22,12 +22,10 @@ var populatePost = (post) => {
   <div class="spacer-16"></div>
   `
 
-  var content = post.blocks;
-
-  for (i = 0; i < content.length; i++) {
-    document.querySelector('.post-body').innerHTML += content[i].innerHTML;
-    
-  }
+  var content = post.content.rendered;
+  
+  document.querySelector('.post-body').innerHTML = content;
+  
 
   let ul = document.querySelectorAll('.post-body ul')
   let ol = document.querySelectorAll('.post-body ol')
