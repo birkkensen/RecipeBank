@@ -1,8 +1,9 @@
 let featuredPost = []
+let posts = []
+
 
 var populatePost = (post) => {
-  const myDate = post.date = new Date()
-  myDate.toISOString().split('T')[0]
+  const myDate = post.date;
   document.querySelector('.post-header').innerHTML = `
   <h6>${post._embedded["wp:term"][0][0].name}</h6>
   <h3>${post.title.rendered}</h3>
@@ -22,7 +23,6 @@ var populatePost = (post) => {
   `
 
   var content = post.blocks;
-  // console.log(post.featured_media);
 
   for (i = 0; i < content.length; i++) {
     document.querySelector('.post-body').innerHTML += content[i].innerHTML;
@@ -31,11 +31,13 @@ var populatePost = (post) => {
 
   let ul = document.querySelectorAll('.post-body ul')
   let ol = document.querySelectorAll('.post-body ol')
+
+
   let instruction = document.querySelector('.post-body ul')
   let allChildren = instruction.querySelectorAll('li');
 
   for (let i = 0; i < allChildren.length; i++) {
-    if (allChildren[i].childElementCount >= 1) {
+    if (allChildren[i].firstChild.localName === "strong" ) {
       allChildren[i].classList.add('styling');
     }
   }
@@ -46,36 +48,28 @@ var populatePost = (post) => {
   ol.forEach(item => item.classList.add('col-lg-6'));
 }
 
-// var populateFirstPost = (firstPost) => {
-//   const myDate = firstPost.date = new Date()
-//   myDate.toISOString().split('T')[0]
+var filterPost = () => {
+  document.querySelector('.row').innerHTML = ''
+  let input = document.querySelector('.filter__input');
+  let txtValue;
+  let articleTitle;
+  let filter = input.value.toUpperCase();
 
-//   document.querySelector('.post-header').innerHTML = `
-//   <h6>${firstPost._embedded["wp:term"][0][0].name}</h6>
-//   <h3>${firstPost.title.rendered}</h3>
-//   <div class="spacer-16"></div>
-//   <div class="social-media">
-//   <p>${formatDate(myDate)}</p>
-//   <div>
-//   <i class="fas fa-link"></i>
-//   <i class="far fa-heart"></i>
-//   </div>
-// </div>
-// <div class="spacer-16"></div>
-//   <img src="${firstPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
-//   <p class="paragraph-4 margin-b-2x">${firstPost.excerpt.rendered}</p>
-//   <div class="spacer-32"></div>
-//   <div class="spacer-16"></div>
-//   `
-//   document.getElementById('post-title').innerText = firstPost.title.rendered;
-
-//   var content = firstPost.blocks;
-//   // console.log(post.featured_media);
-
-//   for (i = 0; i < content.length; i++) {
-//     document.querySelector('.post-body').innerHTML += content[i].innerHTML;
-//   }
-// }
+  for (i = 0; i < posts.length; i++) {
+    articleTitle = posts[i].title.rendered;
+    txtValue = articleTitle;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      if (filter === '') {
+        createFeaturedPost(featuredPost)
+        for (i = 1; i < posts.length; i++) {
+          createArticle(posts[i])
+        } 
+      } else {
+        createArticle(posts[i])
+      }
+    }
+  }
+}
 
 
 var findQuery = (param) => {
@@ -83,14 +77,36 @@ var findQuery = (param) => {
   return urlParams.get(param);
 }
 
+var getCategories = () => {
+  fetch('http://printerspage.local/wp-json/wp/v2/categories')
+  .then(response => response.json())
+  .then(data => {
+    
+    for (i = 0; i < data.length; i++) {
+      createCategories(data[i])
+      // console.log(data[i])
+    }
+  })
+  .catch((error) => {
+    console.log('Error', error);
+  })
+}
+
+var createCategories = (data) => {
+  container = document.querySelector('.filter__categories');
+  container.innerHTML += `<a href="?id=${data.id}">${data.name}</a>`
+}
+
 var getPosts = () => {
+  getCategories()
   fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
-  // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0];
+    posts = data
     createFeaturedPost(featuredPost);
     for (let i = 1; i < data.length; i++) {
+      // console.log(data[i])
       createArticle(data[i]);
     }
   })
@@ -102,7 +118,6 @@ var getPosts = () => {
 var getPostFromId = () => {
   var id = JSON.parse(findQuery('id'));
   fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
-  // fetch('https://raw.githubusercontent.com/birkkensen/blog-json/main/blog-posts')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0]
@@ -118,18 +133,17 @@ var getPostFromId = () => {
   })
 }
 
-var createFeaturedPost = (post) => {
-  const myDate = post.date = new Date()
-  myDate.toISOString().split('T')[0]
-  var row = document.querySelector('.row');
 
+var createFeaturedPost = (post) => {
+  const myDate = post.date 
+  var row = document.querySelector('.row');
   row.innerHTML = `
   <div class="col-md-6 col-lg-12">
   <div class="featured-article">
     <a href="./pages/posts.html?${featuredPost.slug}&id=${post.id}">
       <div class="row">
         <div class="col-md-12 col-lg-7">
-          <div class="article-image">
+          <div class="article-image skeleton">
             <img src="${featuredPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
           </div>
         </div>
@@ -148,11 +162,8 @@ var createFeaturedPost = (post) => {
 }
 
 var createArticle = (post) => {
-  const myDate = post.date = new Date()
-  myDate.toISOString().split('T')[0]
-
+  const myDate = post.date
   var row = document.querySelector('.row');
-
   row.innerHTML += `
   <div class="col-md-6 col-lg-4">
   <div class="article">
@@ -169,24 +180,9 @@ var createArticle = (post) => {
   </div>
 </div>
   `
-//   articleWrapper.innerHTML += `
-//   <a href="./pages/posts.html?${post.slug}&id=${post.id}" class="articles-wrapper__article">
-//   <div class="articles-wrapper__article__body">
-//   <img class="articles-wrapper__article__image" src="${post._embedded["wp:featuredmedia"][0].source_url}"
-//     alt="Random">
-//     <div class="test">
-//     <h6>${formatDate(myDate)}</h6>
-//     <br>
-//     <h5>${post.title.rendered}</h5>
-//     <br>
-//     <p>${post.excerpt.rendered}</p>
-//     <br>
-//     </div>
-//   </div>
-// </a>`;
 }
 
-function formatDate(date) {
+var formatDate = (date) => {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
@@ -198,4 +194,8 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+var btnIsClicked = () => {
+  console.log('Loading more...')
 }

@@ -66,13 +66,9 @@ $mq-large-screens: 1201px;
 .wrapper-80 {
   width: 80vw;
   max-width: 1240px;
+  position: relative;
 }
 
-.flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .wrapper-lg-60 {
   width: 60%;

@@ -1,9 +1,16 @@
 
 
-.post-header img, .post-body img {
-  width: 100%;
-  // max-height: 460px;
-  border-radius: 8px;
+.post-header {
+  h6 {
+    font-weight: lighter;
+  }
+
+  img {
+    width: 100%;
+    // max-height: 460px;
+    border-radius: 8px;
+  }
+
 }
 
 .social-media {
@@ -17,8 +24,11 @@
 
   i {
     font-size: 1.5em;
-    // font-weight: 100;
     padding-left: 10px;
+    @media screen and (max-width: $mq-phone) {
+      font-size: 1em;
+    }
+
   }
 
   i:first-child  {
@@ -29,8 +39,13 @@
 
 .post-body {
 
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
   ul, ol {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
 
@@ -47,6 +62,7 @@
       margin-bottom: 8px;
       &::before {
         content: '';
+        padding-right: 0;
       }
     }
     li::before {
@@ -56,12 +72,16 @@
     }
     li {
       // background-color: white;
-      padding: 12px 24px;
+      padding: 0px 24px 12px 24px;
       margin-top: 4px;
       border-radius: 4px;
     }
     .styling {
       font-size: 1.1em;
+
+      strong {
+        font-weight: lighter;
+      }
       
       &::before {
         content: '';
@@ -73,18 +93,23 @@
     list-style-type: none;
     counter-reset: section -1;
 
+
     li:first-child {
       background-color: transparent;
       font-size: 1.5em;
+      padding: 16px;
+      margin-top: 8px;
+      margin-bottom: 8px;
       &::before {
         content: '';
       }
     }
     li {
-      padding: 16px;
+      padding: 0px 16px 12px 24px;
       // background-color: white;
       border-radius: 4px;
       margin-top: 8px;
+      line-height: 180%;
     }
 
     li::before {
@@ -92,8 +117,12 @@
       content: counters(section, ".") " "; 
       padding-right: 5px;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 1.2em;
       color: $red-ish-color;
+
+      @media screen and (max-width: $mq-phone) {
+        font-size: 1em;
+      }
       // position: absolute;
     }
   }
@@ -106,7 +135,7 @@
       }
     }
   }
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 630px) {
     ol, ul {
       width: 100%;
       li {

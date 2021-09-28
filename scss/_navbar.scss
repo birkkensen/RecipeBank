@@ -17,6 +17,7 @@ nav {
 
     .logo {
       font-weight: 100;
+      font-size: 2.65rem;
       color: $gray-color;
 
       &:hover {
@@ -28,7 +29,7 @@ nav {
       display: flex;
       list-style: none;
 
-      @media screen and (max-width: $mq-phone) {
+      @media screen and (max-width: $mq-tablet) {
         display: none;
       }
 
