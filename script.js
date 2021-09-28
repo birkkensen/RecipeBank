@@ -78,7 +78,7 @@ var findQuery = (param) => {
 }
 
 var getCategories = () => {
-  fetch('http://printerspage.local/wp-json/wp/v2/categories')
+  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories')
   .then(response => response.json())
   .then(data => {
     
@@ -99,7 +99,7 @@ var createCategories = (data) => {
 
 var getPosts = () => {
   getCategories()
-  fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
+  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0];
@@ -117,7 +117,7 @@ var getPosts = () => {
 
 var getPostFromId = () => {
   var id = JSON.parse(findQuery('id'));
-  fetch('http://printerspage.local/wp-json/wp/v2/posts?_embed')
+  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0]
