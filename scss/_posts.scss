@@ -51,6 +51,11 @@
     font-size: 16px;
     font-size: 1.6rem;
 
+    li {
+      padding: 0px 16px 12px 24px;
+      margin-top: 8px;
+    }
+
     li:first-child {
       font-size: 24px;
       font-size: 2.4rem;
@@ -72,14 +77,12 @@
       color: $red-ish-color;
       padding-right: 10px;
     }
-    li {
-      padding: 0px 24px 12px;
-      margin-top: 4px;
-    }
+
   }
 
   .styling {
-    font-size: 1.1em;
+    font-size: 18px;
+    font-size: 1.8rem;
     padding-left: 12px;
 
     strong {
@@ -95,44 +98,48 @@
     list-style-type: none;
     counter-reset: section -1;
 
-    li {
-      padding: 0px 16px 12px 24px;
-      // background-color: white;
-      border-radius: 4px;
-      margin-top: 8px;
-      line-height: 180%;
-    }
-
     li::before {
       counter-increment: section;
       content: counters(section, ".") " "; 
       padding-right: 5px;
       font-weight: bold;
-      font-size: 1.2em;
+      font-size: 20px;
+      font-size: 2rem;
       color: $red-ish-color;
 
       @media screen and (max-width: $mq-phone) {
-        font-size: 1em;
+        font-size: 16px;
+        font-size: 1.6rem;
       }
-      // position: absolute;
     }
   }
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: $mq-computer) {
     ol, ul {
       width: 75%;
       li {
-        font-size: 1.2em;
+        font-size: 20px;
+        font-size: 2rem;
       }
     }
   }
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: $mq-phone) {
     ol, ul {
       width: 100%;
       li {
         font-size: 1em;
       }
     }
+  }
+
+  // If there's any notes on the document this is the styling for that
+  h4 {
+    font-size: 20px;
+    font-size: 2rem;
+  }
+
+  p {
+    width: 60%;
   }
 }
 
