@@ -569,6 +569,47 @@ nav .logo h1 {
   }
 }
 
+.post-header .skeleton-wrapper-post {
+  margin-top: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.post-header .skeleton-post {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 767px) {
+  .post-header .skeleton-post {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .post-header .skeleton-post-image {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .post-header .skeleton-post-image {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .post-header .skeleton-post-image {
+    height: 300px;
+  }
+}
+
 .post-header__category {
   font-weight: bold;
 }

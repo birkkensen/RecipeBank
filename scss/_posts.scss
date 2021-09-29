@@ -4,6 +4,33 @@
     width: 100%;
   }
 
+  .skeleton-wrapper-post { 
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .skeleton-post {
+    flex: 0 0 auto;
+    width: 100%;
+    @media screen and (min-width: $mq-tablet ) { 
+      width: 90%;
+    }
+  }
+
+  .skeleton-post-image {
+    @media screen and (min-width: $mq-large-screens) { 
+      height: 500px;
+    }
+    @media screen and (min-width: $mq-tablet) { 
+      height: 400px;
+    }
+    @media screen and (min-width: $mq-phone) { 
+      height: 300px;
+    }
+  }
+
   &__category {
     font-weight: bold;
     }
