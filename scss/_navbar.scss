@@ -1,50 +1,38 @@
 nav {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   height: 86px;
-  width: 100vw;
 
   a {
     text-decoration: none;
   }
 
-  .nav-container {
+  ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-   
-
-    .logo {
-      font-weight: 100;
-      font-size: 2.65rem;
-      color: $gray-color;
-
-      &:hover {
-        color: $gray-color;
-      }
+    list-style: none;
+    @media screen and (max-width: $mq-tablet) {
+      display: none;
     }
 
-    ul {
-      display: flex;
-      list-style: none;
-
-      @media screen and (max-width: $mq-tablet) {
-        display: none;
-      }
-
+    a {
+      margin-left: 20px;
+      padding: 5px 20px;
+      background-color: $red-ish-color;
+      border-radius: 100px;
+      transition: background-color .2s ease-in-out;
       li {
-        background-color: $red-ish-color;
-        margin-left: 20px;
-        padding: 5px 15px;
-        border-radius: 20px;
         color: white;
-        transition: all .2s ease-in-out;
-
-        &:hover {
-          background-color: black;
-        }
       }
+
+      &:hover {
+        background-color: $black-color;
+      }
+    }
   }
+  .logo h1 {
+    color: $black-color;
+    font-size: 34px;
+    font-size: 3.4rem;
   }
 }

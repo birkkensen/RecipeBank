@@ -10,117 +10,19 @@
   box-sizing: border-box;
 }
 
-:root {
-  font-size: 12px;
+html {
+  font-size: 62.5%;
 }
 
 body {
-  // font-family: "Playfair Display", serif;
   font-family: 'Avenir Next';
   font-size: 16px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   color: $black-color;
   background-color: white;
   overflow-x: hidden;
   height: auto;
-  // background-color: #E3E6EC;
-  // background-image: url('https://www.dwinawan.com/blog/bgcircle.svg');
-  // background-position: top center;
-  // background-repeat: no-repeat;
 }
 
 
-h1 {
-  font-size: 5em;
-  line-height: 100%;
-}
 
-h2 {
-  font-size: 4em;
-}
-
-h3 {
-  font-size: 3em;
-  line-height: 120%;
-}
-
-h4 {
-  font-size: 2em;
-}
-
-h5 {
-  font-size: 1.5em;
-}
-
-h6 {
-  font-size: 1em;
-}
-
-p {
-  line-height: 180%;
-  font-size: 1em;
-}
-
-a {
-  // text-decoration: none;
-  // color: $red-ish-color;
-  color: inherit;
-  cursor: pointer;
-}
-
-@media screen and (max-width: $mq-computer) {
-
-  h1 {
-    font-size: 3.5em;
-  }
-  
-  h2 {
-    font-size: 4em;
-  }
-  
-  h3 {
-    font-size: 2.625em;
-  }
-  
-  h4 {
-    font-size: 2em;
-  }
-  
-  h6 {
-    font-size: 1em;
-  }
-}
-
-@media screen and (max-width: $mq-tablet) {
-
-  h1 {
-    font-size: 2.625em;
-  }
-  
-  h2 {
-    font-size: 4em;
-  }
-  
-  h3 {
-    font-size: 2.25em;
-  }
-  
-  h4 {
-    font-size: 2em;
-  }
-  
-  h6 {
-    font-size: 1em;
-  }
-}
-
-
-@media screen and (max-width: $mq-phone)  {
-  h3 {
-    font-size: 1.8em;
-  }
-
-}
 

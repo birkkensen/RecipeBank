@@ -23,26 +23,24 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
   <!-- Navbar -->
-  <nav>
-    <div class="nav-container wrapper-80 wrapper-90-mobile">
-      <a href="/">
-        <h1 class="logo">BonjourBaguette</h1>
+  <nav class="wrapper-lg">
+    <a class="logo" href="/">
+      <h1>Birk Kensén</h1>
+    </a>
+    <ul>
+      <a href="">
+        <li>Blog</li>
       </a>
-      <ul>
-        <a href="">
-          <li>Blog</li>
-        </a>
-        <a href="">
-          <li>About</li>
-        </a>
-        <a href="">
-          <li>Contact</li>
-        </a>
-      </ul>
-    </div>
+      <a href="">
+        <li>About</li>
+      </a>
+      <a href="">
+        <li>Contact</li>
+      </a>
+    </ul>
   </nav>
 
-  <div class="container wrapper-80 wrapper-90-mobile">
+  <div class="wrapper-lg">
 
     <h1 class="header"><svg class="header-svg" viewBox="0 0 353 81" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -75,48 +73,63 @@
 
 
     <div class="filter">
-      <div class="filter__categories"></div>
+      <div class="filter__categories">
+      </div>
       <div>
-        <label for="filter-search">Filter search</label>
         <input type="text" class="filter__input" id="filter-search" onkeyup="filterPost()"
           placeholder="Filter search...">
       </div>
     </div>
-    <div class="row"></div>
-    <div class="spacer-7vw"></div>
-    <button onclick="btnIsClicked()" class="load-more">Load more</button>
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div>
+          <div>
+            <div class="skeleton"></div>
+            <div class="skeleton-body">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div>
+          <div>
+            <div class="skeleton"></div>
+            <div class="skeleton-body">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div>
+          <div>
+            <div class="skeleton"></div>
+            <div class="skeleton-body">
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container wrapper-80 wrapper-90-mobile">
-      <div class="newsletter">
-        <h2>Stay in the loop</h2>
-        <div class="spacer-16"></div>
-        <div class="paragraph-4">Subscribe to my monthly update to get a random email every month :D</div>
-        <div class="spacer-32"></div>
-        <div class="newsletter__form">
-          <input type="email" placeholder="Email">
-          <div class="spacer-32"></div>
-          <button type="submit">submit</button>
-        </div>
-      </div>
-      <div class="menu-links">
-        <h6>Menu</h6>
-        <a href="">About</a>
-        <a href="/">Blog</a>
-        <a href="">Contact</a>
-      </div>
-      <div class="blog-links">
-        <h6>Links</h6>
-        <a href="">Item</a>
-        <a href="">Item</a>
-        <a href="">Item</a>
-      </div>
-
-    </div>
   </footer>
 </body>
 

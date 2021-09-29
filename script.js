@@ -5,24 +5,21 @@ let posts = []
 var populatePost = (post) => {
   const myDate = post.date;
   document.querySelector('.post-header').innerHTML = `
-  <h6>${post._embedded["wp:term"][0][1].name}</h6>
-  <h3>${post.title.rendered}</h3>
-  <div class="spacer-16"></div>
-  <div class="social-media">
-  <p>${formatDate(myDate)}</p>
-  <div>
-  <i class="fas fa-link"></i>
-  <i class="far fa-heart"></i>
+  <p class="post-header__category">${post.category}</p>
+  <h3 class="post-header__title">${post.title}</h3>
+  <div class="post-header__social-media">
+      <div>
+        <i class="fas fa-link"></i>
+        <i class="far fa-heart"></i>
+     </div>
+    </div>
   </div>
-</div>
-<div class="spacer-16"></div>
-  <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="">
-  <p class="paragraph-4 margin-b-2x">${post.excerpt.rendered}</p>
-  <div class="spacer-32"></div>
-  <div class="spacer-16"></div>
+  <img class="post-header__image" src="${post.image}" alt="">
+  <p class="post-header__published">Published: ${formatDate(myDate)}</p>
+  <div class="post-header__summary">${post.summary}</div>
   `
 
-  var content = post.content.rendered;
+  var content = post.content;
   
   document.querySelector('.post-body').innerHTML = content;
   
@@ -121,7 +118,7 @@ var getPostFromId = () => {
     featuredPost = data[0]
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === id) {
-        populatePost(data[i])
+        populatePost(formatPosts(data[i]))
       } 
        
     }
@@ -137,7 +134,8 @@ var formatPosts = (post) => {
     id: (post.id) ? post.id : 'No id',
     date: (post.date) ? post.date : 'No date',
     slug: (post.slug) ? post.slug : 'No slug',
-    image: (post._embedded && post._embedded["wp:featuredmedia"]) ? 
+    category: (post._embedded && post._embedded['wp:term']) ? post._embedded['wp:term'][0][1].name : 'Undefined',
+    image: (post._embedded && post._embedded['wp:featuredmedia']) ? 
     post._embedded["wp:featuredmedia"][0].source_url : '../images/donut_render.png',
     summary: (post.excerpt) ? post.excerpt.rendered : 'No excerpt',
     content: (post.content) ? post.content.rendered : 'No content has be writtten'
@@ -151,8 +149,8 @@ var createFeaturedPost = (post) => {
   var row = document.querySelector('.row');
   row.innerHTML = `
   <div class="col-md-6 col-lg-12">
-  <div class="featured-article">
-    <a href="./pages/posts.html?${post.slug}&id=${post.id}">
+  <div class="article featured-article">
+    <a class="article-anchor" href="./pages/posts.html?${post.slug}&id=${post.id}">
       <div class="row">
         <div class="col-md-12 col-lg-7">
           <div class="article-image">
@@ -160,9 +158,9 @@ var createFeaturedPost = (post) => {
           </div>
         </div>
         <div class="col-md-12 col-lg-5">
-          <div class="article-body">
+          <div class="article-body featured-body">
             <p class="article-published">${formatDate(myDate)}</p>
-            <h2 class="article-title featured">${post.title}</h2>
+            <h2 class="article-title featured-title">${post.title}</h2>
             <div class="featured-description">${post.summary}</div>
           </div>
         </div>
@@ -179,7 +177,7 @@ var createArticle = (post) => {
   row.innerHTML += `
   <div class="col-md-6 col-lg-4">
   <div class="article">
-    <a href="./pages/posts.html?${post.slug}&id=${post.id}">
+    <a class="article-anchor" href="./pages/posts.html?${post.slug}&id=${post.id}">
       <div class="article-image">
         <img src="${post.image}" alt="">
       </div>
