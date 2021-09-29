@@ -55,12 +55,12 @@ var filterPost = () => {
     txtValue = articleTitle;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       if (filter === '') {
-        createFeaturedPost(featuredPost)
+        createFeaturedPost(formatPosts(featuredPost))
         for (i = 1; i < posts.length; i++) {
-          createArticle(posts[i])
+          createArticle(formatPosts(posts[i]))
         } 
       } else {
-        createArticle(posts[i])
+        createArticle(formatPosts(posts[i]))
       }
     }
   }
