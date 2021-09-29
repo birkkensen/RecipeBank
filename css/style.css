@@ -240,7 +240,7 @@ nav .logo h1 {
 
 .filter__input {
   font-family: 'Avenir Next';
-  padding: 5px 10px;
+  padding: 10px 20px;
   outline: none;
   border: #E1E6F9 1px solid;
   border-radius: 20px;
@@ -277,20 +277,20 @@ nav .logo h1 {
 
 @media screen and (max-width: 576px) {
   .filter__input::-webkit-input-placeholder {
-    font-size: 12px;
-    font-size: 1.2rem;
+    font-size: 14px;
+    font-size: 1.4rem;
   }
   .filter__input:-ms-input-placeholder {
-    font-size: 12px;
-    font-size: 1.2rem;
+    font-size: 14px;
+    font-size: 1.4rem;
   }
   .filter__input::-ms-input-placeholder {
-    font-size: 12px;
-    font-size: 1.2rem;
+    font-size: 14px;
+    font-size: 1.4rem;
   }
   .filter__input::placeholder {
-    font-size: 12px;
-    font-size: 1.2rem;
+    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 
@@ -323,7 +323,7 @@ nav .logo h1 {
   color: #0D0D0D;
   margin-right: 10px;
   margin-bottom: 10px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   border-radius: 20px;
 }
 

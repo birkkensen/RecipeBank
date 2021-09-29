@@ -126,7 +126,7 @@
 
     &__input {
       font-family: 'Avenir Next';
-      padding: 5px 10px;
+      padding: 10px 20px;
       outline: none;
       border: $light-gray-color 1px solid;
       border-radius: 20px;
@@ -143,8 +143,8 @@
       font-size: 16px;
       font-size: 1.6rem;
       @media screen and (max-width: $mq-phone) {
-        font-size: 12px;
-        font-size: 1.2rem;
+        font-size: 14px;
+        font-size: 1.4rem;
       }
     }
 
@@ -169,7 +169,7 @@
         color: $black-color;
         margin-right: 10px;
         margin-bottom: 10px;
-        padding: 5px 20px;
+        padding: 10px 20px;
         border-radius: 20px;
 
       }
