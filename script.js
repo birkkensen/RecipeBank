@@ -5,7 +5,7 @@ let posts = []
 var populatePost = (post) => {
   const myDate = post.date;
   document.querySelector('.post-header').innerHTML = `
-  <h6>${post._embedded["wp:term"][0][0].name}</h6>
+  <h6>${post._embedded["wp:term"][0][1].name}</h6>
   <h3>${post.title.rendered}</h3>
   <div class="spacer-16"></div>
   <div class="social-media">
@@ -102,10 +102,10 @@ var getPosts = () => {
   .then(data => {
     featuredPost = data[0];
     posts = data
-    createFeaturedPost(featuredPost);
+    createFeaturedPost(formatPosts(data[0]));
     for (let i = 1; i < data.length; i++) {
-      // console.log(data[i])
-      createArticle(data[i]);
+      createArticle(formatPosts(data[i]));
+      
     }
   })
   .catch((error) => {
@@ -131,6 +131,20 @@ var getPostFromId = () => {
   })
 }
 
+var formatPosts = (post) => {
+  let formated = {
+    title: (post.title) ? post.title.rendered : 'No title',
+    id: (post.id) ? post.id : 'No id',
+    date: (post.date) ? post.date : 'No date',
+    slug: (post.slug) ? post.slug : 'No slug',
+    image: (post._embedded && post._embedded["wp:featuredmedia"]) ? 
+    post._embedded["wp:featuredmedia"][0].source_url : '../images/donut_render.png',
+    summary: (post.excerpt) ? post.excerpt.rendered : 'No excerpt',
+    content: (post.content) ? post.content.rendered : 'No content has be writtten'
+  }
+  return formated;
+}
+
 
 var createFeaturedPost = (post) => {
   const myDate = post.date 
@@ -138,18 +152,18 @@ var createFeaturedPost = (post) => {
   row.innerHTML = `
   <div class="col-md-6 col-lg-12">
   <div class="featured-article">
-    <a href="./pages/posts.html?${featuredPost.slug}&id=${post.id}">
+    <a href="./pages/posts.html?${post.slug}&id=${post.id}">
       <div class="row">
         <div class="col-md-12 col-lg-7">
-          <div class="article-image skeleton">
-            <img src="${featuredPost._embedded["wp:featuredmedia"][0].source_url}" alt="">
+          <div class="article-image">
+            <img src="${post.image}" alt="">
           </div>
         </div>
         <div class="col-md-12 col-lg-5">
           <div class="article-body">
-            <div class="article-published">${formatDate(myDate)}</div>
-            <div class="featured-title">${featuredPost.title.rendered}</div>
-            <div class="featured-description">${featuredPost.excerpt.rendered}</div>
+            <p class="article-published">${formatDate(myDate)}</p>
+            <h2 class="article-title featured">${post.title}</h2>
+            <div class="featured-description">${post.summary}</div>
           </div>
         </div>
       </div>
@@ -167,12 +181,12 @@ var createArticle = (post) => {
   <div class="article">
     <a href="./pages/posts.html?${post.slug}&id=${post.id}">
       <div class="article-image">
-        <img src="${post._embedded["wp:featuredmedia"][0].source_url}" alt="">
+        <img src="${post.image}" alt="">
       </div>
       <div class="article-body">
-        <div class="article-published">${formatDate(myDate)}</div>
-        <div class="article-title">${post.title.rendered}</div>
-        <div class="article-description">${post.excerpt.rendered}</div>
+        <p class="article-published">${formatDate(myDate)}</p>
+        <h2 class="article-title">${post.title}</h2>
+        <div class="article-description">${post.summary}</div>
       </div>
     </a>
   </div>
@@ -192,8 +206,4 @@ var formatDate = (date) => {
         day = '0' + day;
 
     return [year, month, day].join('-');
-}
-
-var btnIsClicked = () => {
-  console.log('Loading more...')
 }
