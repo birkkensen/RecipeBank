@@ -8,6 +8,7 @@ var populatePost = (post) => {
   <p class="post-header__category">${post.category}</p>
   <h3 class="post-header__title">${post.title}</h3>
   <div class="post-header__social-media">
+  <p class="published">Published: ${formatDate(myDate)}</p>
       <div>
         <i class="fas fa-link"></i>
         <i class="far fa-heart"></i>
@@ -15,7 +16,7 @@ var populatePost = (post) => {
     </div>
   </div>
   <img class="post-header__image" src="${post.image}" alt="">
-  <p class="post-header__published">Published: ${formatDate(myDate)}</p>
+  
   <div class="post-header__summary">${post.summary}</div>
   `
 
@@ -37,14 +38,14 @@ var populatePost = (post) => {
     }
   }
 
-  ul.forEach(item => item.classList.add('col-sm-12'))
-  ul.forEach(item => item.classList.add('col-lg-5'))
-  ol.forEach(item => item.classList.add('col-sm-12'));
-  ol.forEach(item => item.classList.add('col-lg-6'));
+  ul.forEach(item => item.classList.add('un-ordered-list'))
+  // ul.forEach(item => item.classList.add('col-lg-5'))
+  ol.forEach(item => item.classList.add('ordered-list'));
+  // ol.forEach(item => item.classList.add('col-lg-6'));
 }
 
 var filterPost = () => {
-  document.querySelector('.row').innerHTML = ''
+  document.querySelector('.flex-row').innerHTML = ''
   let input = document.querySelector('.filter__input');
   let txtValue;
   let articleTitle;
@@ -78,8 +79,9 @@ var getCategories = () => {
   .then(data => {
     
     for (i = 0; i < data.length; i++) {
+      // console.log(formatPosts(createCategories(data[i])))
+      console.log(data[i])
       createCategories(data[i])
-      // console.log(data[i])
     }
   })
   .catch((error) => {
@@ -100,6 +102,7 @@ var getPosts = () => {
     featuredPost = data[0];
     posts = data
     createFeaturedPost(formatPosts(data[0]));
+    // console.log(data.length)
     for (let i = 1; i < data.length; i++) {
       createArticle(formatPosts(data[i]));
       
@@ -146,23 +149,19 @@ var formatPosts = (post) => {
 
 var createFeaturedPost = (post) => {
   const myDate = post.date 
-  var row = document.querySelector('.row');
+  var row = document.querySelector('.flex-row');
   row.innerHTML = `
-  <div class="col-md-6 col-lg-12">
+  <div class="article-wrapper featured-wrapper">
   <div class="article featured-article">
     <a class="article-anchor" href="./pages/posts.html?${post.slug}&id=${post.id}">
-      <div class="row">
-        <div class="col-md-12 col-lg-7">
-          <div class="article-image">
-            <img src="${post.image}" alt="">
-          </div>
+      <div class="flex-row">
+          <div class="article-image featured-image">
+          <img src="${post.image}" alt="">
         </div>
-        <div class="col-md-12 col-lg-5">
           <div class="article-body featured-body">
             <p class="article-published">${formatDate(myDate)}</p>
             <h2 class="article-title featured-title">${post.title}</h2>
             <div class="featured-description">${post.summary}</div>
-          </div>
         </div>
       </div>
     </a>
@@ -173,9 +172,9 @@ var createFeaturedPost = (post) => {
 
 var createArticle = (post) => {
   const myDate = post.date
-  var row = document.querySelector('.row');
+  var row = document.querySelector('.flex-row');
   row.innerHTML += `
-  <div class="col-md-6 col-lg-4">
+  <div class="article-wrapper">
   <div class="article">
     <a class="article-anchor" href="./pages/posts.html?${post.slug}&id=${post.id}">
       <div class="article-image">

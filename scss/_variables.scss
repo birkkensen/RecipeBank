@@ -7,7 +7,7 @@ $red-ish-color: #ff4d57;
 $input-color: #646B8C;
 $input-shadow-color: #275EFE;
 
-$mq-phone: 481px;
+$mq-phone: 576px;
 $mq-tablet:767px; 
 $mq-computer: 991px;
 $mq-large-screens: 1201px;
@@ -23,4 +23,9 @@ $mq-large-screens: 1201px;
   @media screen and (max-width: $mq-computer) {
     width: 90vw;
   }
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
 }
