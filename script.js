@@ -1,6 +1,24 @@
 let featuredPost = []
 let posts = []
 
+// let options = {
+//   threshold: 0.2
+// }
+
+// let observer = new IntersectionObserver(function (entries) {
+//   for (let i = 0; i < entries.length; i++) {
+//     if (entries[i].isIntersecting) {
+//       entries[i].target.classList.add('been-in-view');
+//      } 
+//   }
+// }, options);
+
+// function startObserver() {
+//  let target = document.querySelectorAll('.article-wrapper');
+//   for (let i = 0; i < target.length; i++) {
+//    observer.observe(target[i]);
+//   }
+// }
 
 var populatePost = (post) => {
   const myDate = post.date;
@@ -77,11 +95,8 @@ var getCategories = () => {
   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories')
   .then(response => response.json())
   .then(data => {
-    
-    for (i = 0; i < data.length; i++) {
-      // console.log(formatPosts(createCategories(data[i])))
-      console.log(data[i])
-      createCategories(data[i])
+    for (i = 1; i < data.length; i++) {
+      createCategorieButtons(data[i])
     }
   })
   .catch((error) => {
@@ -89,24 +104,50 @@ var getCategories = () => {
   })
 }
 
-var createCategories = (data) => {
+
+var createCategorieButtons = (data) => {
   container = document.querySelector('.filter__categories');
-  container.innerHTML += `<a href="?id=${data.id}">${data.name}</a>`
+  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), myFunction(event)">${data.name}</button>`
+}
+
+var filterCategories = (filter) => {
+  document.getElementById('row').innerHTML = '';
+  for (i = 0; i < posts.length; i++) {
+    if (filter === '1') {
+      createFeaturedPost(formatPosts(posts[0]))
+      for (i = 1; i < posts.length; i++) {
+        createArticle(formatPosts(posts[i]))
+      } 
+    } else if(posts[i].categories == filter) {
+      createArticle(formatPosts(posts[i]))
+    } 
+  }
+}
+function myFunction(e) {
+  var elems = document.querySelectorAll(".active");
+  [].forEach.call(elems, function(el) {
+    el.classList.remove("active");
+  });
+  e.target.className = "active";
 }
 
 var getPosts = () => {
-  getCategories()
   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0];
     posts = data
     createFeaturedPost(formatPosts(data[0]));
-    // console.log(data.length)
     for (let i = 1; i < data.length; i++) {
       createArticle(formatPosts(data[i]));
-      
     }
+  })
+  .then(() => {
+    getCategories()
+  })
+  .then(() => {
+    // startObserver()
+    console.log('So far so good')
   })
   .catch((error) => {
     console.log('Error', error);
@@ -137,7 +178,8 @@ var formatPosts = (post) => {
     id: (post.id) ? post.id : 'No id',
     date: (post.date) ? post.date : 'No date',
     slug: (post.slug) ? post.slug : 'No slug',
-    category: (post._embedded && post._embedded['wp:term']) ? post._embedded['wp:term'][0][1].name : 'Undefined',
+    category: (post._embedded && post._embedded['wp:term']) ? post._embedded['wp:term'][0][0].name : 'Undefined',
+    categoryId: (post.categories) ? post.categories : 'Undefined',
     image: (post._embedded && post._embedded['wp:featuredmedia']) ? 
     post._embedded["wp:featuredmedia"][0].source_url : '../images/donut_render.png',
     summary: (post.excerpt) ? post.excerpt.rendered : 'No excerpt',

@@ -311,20 +311,23 @@ nav .logo h1 {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .filter__categories {
-    display: none;
-  }
-}
-
-.filter__categories a {
-  text-decoration: none;
-  background-color: #E1E6F9;
-  color: #0D0D0D;
+.filter__categories button {
+  color: #404E59;
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 10px 20px;
   border-radius: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  border: white 1.5px solid;
+  cursor: pointer;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.filter__categories .active {
+  border: #E1E6F9 1.5px solid;
+  color: #ff4d57;
 }
 
 .skeleton-wrapper {

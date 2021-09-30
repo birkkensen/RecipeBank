@@ -69,13 +69,14 @@
 
     <div class="filter">
       <div class="filter__categories">
+        <button class="category-btn active" onclick="filterCategories('1'), myFunction(event)">Alla</button>
       </div>
       <div>
         <input type="text" class="filter__input" id="filter-search" onkeyup="filterPost()"
           placeholder="Filter search...">
       </div>
     </div>
-    <div class="flex-row">
+    <div class="flex-row" id="row">
       <div class="skeleton-wrapper">
         <div class="skeleton-article">
           <div class="skeleton"></div>

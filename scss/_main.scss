@@ -158,23 +158,31 @@
       @media screen and (max-width: 1120px) {
         max-width: 1240px;
       }
-      @media screen and (max-width: $mq-tablet) {
-        display: none;
-      }
+      // @media screen and (max-width: $mq-tablet) {
+      //    display: none;
+      // }
 
-
-      a {
-        text-decoration: none;
-        background-color: $light-gray-color;
-        color: $black-color;
+      button {
+        color: $gray-color;
         margin-right: 10px;
         margin-bottom: 10px;
         padding: 10px 20px;
         border-radius: 20px;
+        font-weight: bold;
+        background-color: transparent;
+        border: white 1.5px solid;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+      }
+      .active {
+        border: $light-gray-color 1.5px solid;
+        color: $red-ish-color;
 
       }
     }
   }
+
+
 
   .skeleton-wrapper { 
     display: flex;
@@ -240,6 +248,13 @@
   .article-wrapper {
     flex: 0 0 auto;
     width: 33.3333%;
+    // opacity: 0;
+    // transition: all 500ms;
+    // transform: scale(0.9);
+    // &.been-in-view{
+    //   opacity: 1;
+    //   transform: scale(1);
+    // }
 
     @media screen and (max-width: $mq-computer) {
       width: 50%;
