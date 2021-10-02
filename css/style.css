@@ -227,9 +227,6 @@ nav .logo h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -311,7 +308,7 @@ nav .logo h1 {
   }
 }
 
-.filter__categories button {
+.category-btn {
   color: #404E59;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -323,11 +320,22 @@ nav .logo h1 {
   cursor: pointer;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  opacity: 0;
 }
 
-.filter__categories .active {
+.category-btn:hover {
+  color: #ff4d57;
+}
+
+.active {
   border: #E1E6F9 1.5px solid;
   color: #ff4d57;
+}
+
+.show {
+  -webkit-transition: opacity .3s ease-in;
+  transition: opacity .3s ease-in;
+  opacity: 1;
 }
 
 .skeleton-wrapper {
@@ -778,6 +786,8 @@ nav .logo h1 {
 .post-body h4 {
   font-size: 20px;
   font-size: 2rem;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .post-body p {

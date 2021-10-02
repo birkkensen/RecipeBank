@@ -117,7 +117,7 @@
 
   .filter {
     display: flex;
-    align-items: flex-start;
+    // align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0px 12px 20px;
@@ -162,28 +162,35 @@
       //    display: none;
       // }
 
-      button {
-        color: $gray-color;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-weight: bold;
-        background-color: transparent;
-        border: white 1.5px solid;
-        cursor: pointer;
-        transition: all .2s ease-in-out;
-      }
-      .active {
-        border: $light-gray-color 1.5px solid;
-        color: $red-ish-color;
-
-      }
     }
   }
+  .category-btn {
+    color: $gray-color;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: white 1.5px solid;
+    cursor: pointer;
+    transition: all .2s ease-in-out; 
+    opacity: 0;
 
+    &:hover {
+      color: $red-ish-color;
+    }
+  }
+  .active {
+    border: $light-gray-color 1.5px solid;
+    color: $red-ish-color;
+  }
+  .show {
+    transition: opacity .3s ease-in;
+    opacity: 1;
 
-
+  }
+  
   .skeleton-wrapper { 
     display: flex;
     flex-wrap: wrap;
@@ -244,6 +251,8 @@
       background-color: hsl(200, 20%, 95%);
     }
   }
+
+  
 
   .article-wrapper {
     flex: 0 0 auto;

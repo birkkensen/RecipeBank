@@ -99,10 +99,18 @@ var getCategories = () => {
       createCategorieButtons(data[i])
     }
   })
+  .then(() => {
+    setTimeout(function() {
+    let allCategories = document.querySelectorAll('.category-btn')
+    allCategories.forEach(item => item.classList.add('show'))
+  }, 100)
+})
   .catch((error) => {
     console.log('Error', error);
   })
 }
+
+
 
 
 var createCategorieButtons = (data) => {
@@ -123,12 +131,13 @@ var filterCategories = (filter) => {
     } 
   }
 }
+
 function myFunction(e) {
   var elems = document.querySelectorAll(".active");
   [].forEach.call(elems, function(el) {
     el.classList.remove("active");
   });
-  e.target.className = "active";
+  e.target.className = "category-btn active show";
 }
 
 var getPosts = () => {
