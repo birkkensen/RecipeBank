@@ -23,10 +23,11 @@ let posts = []
 var populatePost = (post) => {
   const myDate = post.date;
   document.querySelector('.post-header').innerHTML = `
-  <p class="post-header__category">${post.category}</p>
+  
   <h3 class="post-header__title">${post.title}</h3>
+  <p class="post-header__category">${post.category}</p>
   <div class="post-header__social-media">
-  <p class="published">Published: ${formatDate(myDate)}</p>
+  <p class="published">Publiserat: ${formatDate(myDate)}</p>
       <div>
         <i class="fas fa-link"></i>
         <i class="far fa-heart"></i>
@@ -37,26 +38,20 @@ var populatePost = (post) => {
   
   <div class="post-header__summary">${post.summary}</div>
   `
-
-  var content = post.content;
   
-  document.querySelector('.post-body').innerHTML = content;
+  document.querySelector('.post-body').innerHTML = post.content;
   
-
-  let ul = document.querySelectorAll('.post-body ul')
-  let ol = document.querySelectorAll('.post-body ol')
-
-
   let instruction = document.querySelector('.post-body ul')
   let allChildren = instruction.querySelectorAll('li');
 
   for (let i = 0; i < allChildren.length; i++) {
     if (allChildren[i].firstChild.localName === "strong" ) {
-      allChildren[i].classList.add('styling');
+      allChildren[i].classList.add('sub-heading');
     }
   }
-
-  ul.forEach(item => item.classList.add('un-ordered-list'))
+  let ul = document.querySelectorAll('.post-body ul')
+  let ol = document.querySelectorAll('.post-body ol')
+  ul.forEach(item => item.classList.add('unordered-list'))
   // ul.forEach(item => item.classList.add('col-lg-5'))
   ol.forEach(item => item.classList.add('ordered-list'));
   // ol.forEach(item => item.classList.add('col-lg-6'));
@@ -91,31 +86,44 @@ var findQuery = (param) => {
   return urlParams.get(param);
 }
 
-var getCategories = () => {
-  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories')
-  .then(response => response.json())
-  .then(data => {
-    for (i = 1; i < data.length; i++) {
-      createCategorieButtons(data[i])
-    }
-  })
-  .then(() => {
-    setTimeout(function() {
-    let allCategories = document.querySelectorAll('.category-btn')
-    allCategories.forEach(item => item.classList.add('show'))
-  }, 100)
-})
-  .catch((error) => {
-    console.log('Error', error);
-  })
+async function getCategories() {
+  const response = await fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories');
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    throw new Error(message);
+  }
+  const data = await response.json();
+  return data;
 }
+
+// getCategories()
+
+
+// var getCategories = () => {
+//   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories')
+//   .then(response => response.json())
+//   .then(data => {
+//     for (i = 1; i < data.length; i++) {
+//       createCategorieButtons(data[i])
+//     }
+//   })
+//   .then(() => {
+//     setTimeout(function() {
+//     let allCategories = document.querySelectorAll('.category-btn')
+//     allCategories.forEach(item => item.classList.add('show'))
+//   }, 100)
+// })
+//   .catch((error) => {
+//     console.log('Error', error);
+//   })
+// }
 
 
 
 
 var createCategorieButtons = (data) => {
   container = document.querySelector('.filter__categories');
-  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), myFunction(event)">${data.name}</button>`
+  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategorie(event)">${data.name}</button>`
 }
 
 var filterCategories = (filter) => {
@@ -132,7 +140,7 @@ var filterCategories = (filter) => {
   }
 }
 
-function myFunction(e) {
+var activeCategorie = (e) => {
   var elems = document.querySelectorAll(".active");
   [].forEach.call(elems, function(el) {
     el.classList.remove("active");
@@ -152,11 +160,17 @@ var getPosts = () => {
     }
   })
   .then(() => {
-    getCategories()
-  })
-  .then(() => {
-    // startObserver()
-    console.log('So far so good')
+    getCategories().then(data => {
+      for (i = 1; i < data.length; i++) {
+          createCategorieButtons(data[i])
+      }
+    })
+    .then(() => {
+      setTimeout(function() {
+      let allCategories = document.querySelectorAll('.category-btn')
+      allCategories.forEach(item => item.classList.add('show'))
+    }, 100)
+    })
   })
   .catch((error) => {
     console.log('Error', error);
@@ -210,9 +224,10 @@ var createFeaturedPost = (post) => {
           <img src="${post.image}" alt="">
         </div>
           <div class="article-body featured-body">
-            <p class="article-published">${formatDate(myDate)}</p>
+          <p class="article-category">${post.category}</p>
             <h2 class="article-title featured-title">${post.title}</h2>
             <div class="featured-description">${post.summary}</div>
+            <p class="article-published">${formatDate(myDate)}</p>
         </div>
       </div>
     </a>
@@ -232,9 +247,10 @@ var createArticle = (post) => {
         <img src="${post.image}" alt="">
       </div>
       <div class="article-body">
-        <p class="article-published">${formatDate(myDate)}</p>
+        <p class="article-category">${post.category}</p>
         <h2 class="article-title">${post.title}</h2>
         <div class="article-description">${post.summary}</div>
+        <p class="article-published">${formatDate(myDate)}</p>
       </div>
     </a>
   </div>
@@ -244,14 +260,51 @@ var createArticle = (post) => {
 
 var formatDate = (date) => {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
+        month = (d.getMonth() + 1),
+        day = d.getDate(),
         year = d.getFullYear();
-
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [year, month, day].join('-');
+  
+    switch(month) {
+      case 1:
+        month = 'Januari'
+        break;
+      case 2:
+        month = 'Februari'
+        break;
+      case 3:
+        month = 'Mars'
+        break;
+      case 4:
+        month = 'April'
+        break;
+      case 5:
+        month = 'Maj'
+        break;
+      case 6:
+        month = 'Juni'
+        break;
+      case 7:
+        month = 'Juli'
+        break;
+      case 8:
+        month = 'Augusti'
+        break;
+      case 9:
+        month = 'September'
+        break;
+      case 10:
+        month = 'Oktober'
+        break;
+      case 11:
+        month = 'November'
+        break;
+      case 12:
+        month = 'December'
+        break;
+      default:
+        month = 'Undefined'
+    }
+    
+    
+    return `${day} ${month}, ${year}`;
 }

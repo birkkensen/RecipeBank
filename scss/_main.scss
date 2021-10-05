@@ -29,7 +29,7 @@
   @keyframes line {
     to {
       width: 75%;
-      background-color: $black-color;
+      background-color: $gray-color;
     }
   }
 
@@ -122,22 +122,52 @@
     flex-wrap: wrap;
     margin: 0px 12px 20px;
 
+    &__form {
+    display:flex;
+    flex-direction:row;
+    border: 1px solid $light-gray-color;
+    padding: 2px;
+    border-radius: 100px;
+    }
 
+    &__clearBtn {
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      margin-right: 10px;
+      height: 20px;
+      align-self: center;
+
+      img {
+       width: 20px;
+       height: 20px;
+      }
+
+      &:active {
+        transform: scale(.95);
+      }
+    }
 
     &__input {
       font-family: 'Avenir Next';
-      padding: 10px 20px;
+      padding: 7px 20px;
       outline: none;
-      border: $light-gray-color 1px solid;
+      // border: $light-gray-color 1px solid;
       border-radius: 20px;
       transition: all .3s ease-in-out;
       color: $input-color;
+      flex-grow: 2;
+      font-size: 14px;
+      font-size: 1.4rem;
+      border:none;
+      // font-weight: 600;
+      color: $gray-color;
     }
 
-    &__input:focus {
-      border-color: $blue-color;
-      box-shadow: 0 0 0px .5px $input-shadow-color;
-    }
+    // &__input:focus {
+    //   border-color: $blue-color;
+    //   box-shadow: 0 0 0px .5px $input-shadow-color;
+    // }
 
     &__input::placeholder {
       font-size: 16px;
@@ -186,7 +216,7 @@
     color: $red-ish-color;
   }
   .show {
-    transition: opacity .3s ease-in;
+    transition: all .2s ease-in;
     opacity: 1;
 
   }
@@ -294,12 +324,16 @@
     padding: 12px 20px 40px 8px;
   }
 
-  .article-published {
+  .article-category {
     font-size: 14px;
     font-size: 1.4rem;
-    color: $black-color;
+    font-weight: 600;
+    color: $red-ish-color;
     margin-bottom: 12px;
-    opacity: 0.8;
+    background-color: rgba($color: $red-ish-color, $alpha: .1);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px; 
 }
 
   .article-title {
@@ -313,6 +347,16 @@
   .article-description {
     font-size: 15px;
     color: $gray-color;
+    margin-bottom: 12px;
+}
+
+.article-published {
+  font-size: 12px;
+  font-size: 1.2rem;
+  color: $black-color;
+  opacity: .5;
+  font-weight: bold;
+  text-transform: uppercase;
 }
   .featured-wrapper {
     @media screen and (min-width: $mq-computer) {
@@ -374,13 +418,13 @@
       font-size: 16px;
       font-size: 1.6rem;
       color: $gray-color;
+      margin-bottom: 12px;
         @media screen and (max-width: $mq-computer) {
           font-size: 15px;
           font-size: 1.5rem;
         }
     }
   }
-    
 
 
 

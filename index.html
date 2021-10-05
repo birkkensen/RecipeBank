@@ -14,6 +14,7 @@
     rel="stylesheet">
   <title>BirksBlog | Blog</title>
   <script src="./script.js"></script>
+  <script src="https://kit.fontawesome.com/5cf4a78028.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="getPosts()">
@@ -69,12 +70,14 @@
 
     <div class="filter">
       <div class="filter__categories">
-        <button class="category-btn active" onclick="filterCategories('1'), myFunction(event)">Alla</button>
+        <button class="category-btn active" onclick="filterCategories('1'), activeCategorie(event)">Alla</button>
       </div>
-      <div>
+      <form class="filter__form">
         <input type="text" class="filter__input" id="filter-search" onkeyup="filterPost()"
           placeholder="Filter search...">
-      </div>
+        <button class="filter__clearBtn" type="reset" onclick="filterPost();"><img src="./images/xmark-solid.svg"
+            alt="Clear-text"></i></button>
+      </form>
     </div>
     <div class="flex-row" id="row">
       <div class="skeleton-wrapper">
@@ -117,11 +120,26 @@
     </div>
   </div>
 
-
-
   <!-- Footer -->
-  <footer style="height: 7vw;">
+  <footer class="wrapper-lg">
+    <div class="form-wrapper">
+      <h3>Subscribe to my monthly newsletter!</h3>
+      <form>
+        <input type="text" placeholder="Email adress">
+        <a href="mailto:birk.kensen@gmail.com">Subscribe</a>
+      </form>
+    </div>
+    <div class="social-media">
+      <a href="http://instagram.com/birkkensen" target="_blank" rel="noopener noreferrer"><i
+          class="fab fa-instagram"></i></a>
+      <a href="https://github.com/birkkensen" target="_blank" rel="noopener noreferrer"><i
+          class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/birkkensen/" target="_blank" rel="noopener noreferrer"><i
+          class="fab fa-linkedin"></i></a>
+    </div>
   </footer>
+
+
 </body>
 
 </html>

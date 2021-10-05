@@ -9,7 +9,7 @@ nav {
   }
 
   ul {
-    display: flex;
+    display: none;
     list-style: none;
     @media screen and (max-width: $mq-tablet) {
       display: none;

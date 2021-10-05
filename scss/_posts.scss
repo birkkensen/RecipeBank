@@ -32,7 +32,15 @@
   }
 
   &__category {
-    font-weight: bold;
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $red-ish-color;
+    margin-bottom: 12px;
+    background-color: rgba($color: $red-ish-color, $alpha: .1);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px; 
     }
 
   &__title {
@@ -72,8 +80,17 @@
 
 
 .post-body {
+  margin-bottom: 72px;
 
-  .un-ordered-list {
+  a:link {
+    color: $blue-color;
+  }
+
+  a:visited {
+    color: $blue-color;
+  }
+
+  .unordered-list {
     flex: 0 0 auto;
     width: 100%;
     @media screen and (min-width: $mq-computer) {
@@ -126,7 +143,7 @@
 
   }
 
-  .styling {
+  .sub-heading {
     font-size: 18px;
     font-size: 1.8rem;
     padding-left: 12px;
