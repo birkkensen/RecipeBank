@@ -1,12 +1,11 @@
+
 let featuredPost = []
 let posts = []
 
-
-
 var populatePost = (post) => {
   const myDate = post.date;
-  document.querySelector('.post-header').innerHTML = `
-  <h3 class="post-header__title">${post.title}</h3>
+  document.querySelector('.post-header').innerHTML = 
+  `<h3 class="post-header__title">${post.title}</h3>
   <p class="post-header__category">${post.category}</p>
   <div class="post-header__social-media">
   <p class="published">Publiserat: ${formatDate(myDate)}</p>
@@ -18,12 +17,11 @@ var populatePost = (post) => {
   </div>
   <img class="post-header__image" src="${post.image}" alt="">
   
-  <div class="post-header__summary">${post.summary}</div>
-  `
+  <div class="post-header__summary">${post.summary}</div>`;
   
   document.querySelector('.post-body').innerHTML = post.content;
   
-  let instruction = document.querySelector('.post-body ul')
+  let instruction = document.querySelector('.post-body ul');
   let allChildren = instruction.querySelectorAll('li');
 
   for (let i = 0; i < allChildren.length; i++) {
@@ -31,12 +29,10 @@ var populatePost = (post) => {
       allChildren[i].classList.add('sub-heading');
     }
   }
-  let ul = document.querySelectorAll('.post-body ul')
-  let ol = document.querySelectorAll('.post-body ol')
-  ul.forEach(item => item.classList.add('unordered-list'))
-  // ul.forEach(item => item.classList.add('col-lg-5'))
+  let ul = document.querySelectorAll('.post-body ul');
+  let ol = document.querySelectorAll('.post-body ol');
+  ul.forEach(item => item.classList.add('unordered-list'));
   ol.forEach(item => item.classList.add('ordered-list'));
-  // ol.forEach(item => item.classList.add('col-lg-6'));
 }
 
 var filterPost = () => {
@@ -51,21 +47,60 @@ var filterPost = () => {
     txtValue = articleTitle;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       if (filter === '') {
-        createFeaturedPost(formatPosts(featuredPost))
+        createFeaturedPost(formatPosts(featuredPost));
         for (i = 1; i < posts.length; i++) {
-          createArticle(formatPosts(posts[i]))
+          createArticle(formatPosts(posts[i]));
         } 
       } else {
-        createArticle(formatPosts(posts[i]))
+        createArticle(formatPosts(posts[i]));
       }
     }
   }
 }
 
+var filterCategories = (filter) => {
+  document.getElementById('row').innerHTML = '';
+  for (i = 0; i < posts.length; i++) {
+    if (filter === '1') {
+      createFeaturedPost(formatPosts(posts[0]));
+      for (i = 1; i < posts.length; i++) {
+        createArticle(formatPosts(posts[i]));
+      } 
+    } else if(posts[i].categories == filter) {
+      createArticle(formatPosts(posts[i]));
+    } 
+  }
+}
+
+var activeCategory = (e) => {
+  var elems = document.querySelectorAll(".active");
+  [].forEach.call(elems, function(el) {
+    el.classList.remove("active");
+  });
+  e.target.className = "category-btn active show";
+}
 
 var findQuery = (param) => {
   var urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
+}
+
+var getPostFromId = () => {
+  var id = JSON.parse(findQuery('id'));
+  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
+  .then(response => response.json())
+  .then(data => {
+    featuredPost = data[0]
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id === id) {
+        populatePost(formatPosts(data[i]));
+      } 
+       
+    }
+  })
+  .catch((error) => {
+    console.log('Error', error);
+  });
 }
 
 async function getCategories() {
@@ -81,37 +116,17 @@ async function getCategories() {
 
 var createCategorieButtons = (data) => {
   container = document.querySelector('.filter__categories');
-  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategory(event)">${data.name}</button>`
+  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategory(event)">${data.name}</button>`;
 }
 
-var filterCategories = (filter) => {
-  document.getElementById('row').innerHTML = '';
-  for (i = 0; i < posts.length; i++) {
-    if (filter === '1') {
-      createFeaturedPost(formatPosts(posts[0]))
-      for (i = 1; i < posts.length; i++) {
-        createArticle(formatPosts(posts[i]))
-      } 
-    } else if(posts[i].categories == filter) {
-      createArticle(formatPosts(posts[i]))
-    } 
-  }
-}
 
-var activeCategory = (e) => {
-  var elems = document.querySelectorAll(".active");
-  [].forEach.call(elems, function(el) {
-    el.classList.remove("active");
-  });
-  e.target.className = "category-btn active show";
-}
 
 var getPosts = () => {
   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
     featuredPost = data[0];
-    posts = data
+    posts = data;
     createFeaturedPost(formatPosts(data[0]));
     for (let i = 1; i < data.length; i++) {
       createArticle(formatPosts(data[i]));
@@ -120,7 +135,7 @@ var getPosts = () => {
   .then(() => {
     getCategories().then(data => {
       for (i = 1; i < data.length; i++) {
-          createCategorieButtons(data[i])
+          createCategorieButtons(data[i]);
       }
     })
     .then(() => {
@@ -134,26 +149,10 @@ var getPosts = () => {
   })
   .catch((error) => {
     console.log('Error', error);
-  })
+  });
 }
 
-var getPostFromId = () => {
-  var id = JSON.parse(findQuery('id'));
-  fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
-  .then(response => response.json())
-  .then(data => {
-    featuredPost = data[0]
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id === id) {
-        populatePost(formatPosts(data[i]))
-      } 
-       
-    }
-  })
-  .catch((error) => {
-    console.log('Error', error);
-  })
-}
+
 
 // Format the JSON
 
@@ -196,7 +195,7 @@ var createFeaturedPost = (post) => {
     </a>
   </div>
 </div>
-  `
+  `;
 }
 
 var createArticle = (post) => {
@@ -218,7 +217,7 @@ var createArticle = (post) => {
     </a>
   </div>
 </div>
-  `
+  `;
 }
 
 // Date format
@@ -272,10 +271,10 @@ var formatDate = (date) => {
     return `${day} ${month}, ${year}`;
 }
 
-// let path = document.querySelectorAll('.svg path')
-// for (i = 0; i < path.length; i++) {
-//   console.log(`Letter ${i} is ${path[i].getTotalLength()}`)
-// }
+let path = document.querySelectorAll('.svg path')
+for (i = 0; i < path.length; i++) {
+  console.log(`Letter ${i} is ${path[i].getTotalLength()}`)
+}
 
 // let options = {
 //   threshold: 0.2
