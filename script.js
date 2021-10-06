@@ -181,7 +181,7 @@ var createFeaturedPost = (post) => {
   row.innerHTML = `
   <div class="article-wrapper featured-wrapper">
   <div class="article featured-article">
-    <a class="article-anchor" href="./pages/posts.html?id=${post.id}&${post.slug}">
+    <a class="article-anchor" href="/recipe/?${post.slug}&id=${post.id}">
       <div class="flex-row">
           <div class="article-image featured-image">
           <img src="${post.image}" alt="">
@@ -205,7 +205,7 @@ var createArticle = (post) => {
   row.innerHTML += `
   <div class="article-wrapper">
   <div class="article">
-    <a class="article-anchor" href="./pages/posts.html?id=${post.id}&${post.slug}">
+    <a class="article-anchor" href="/recipe/?${post.slug}&id=${post.id}">
       <div class="article-image">
         <img src="${post.image}" alt="">
       </div>
