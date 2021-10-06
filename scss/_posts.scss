@@ -20,6 +20,14 @@
     @media screen and (min-width: $mq-tablet ) { 
       width: 90%;
     }
+
+    .post {
+      width: 90%;
+    }
+
+    .post:last-child{
+      width: 80%;
+    }
   }
 
   .skeleton-post-image {

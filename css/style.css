@@ -770,6 +770,14 @@ main {
   }
 }
 
+.post-header .skeleton-post .post {
+  width: 90%;
+}
+
+.post-header .skeleton-post .post:last-child {
+  width: 80%;
+}
+
 @media screen and (min-width: 1201px) {
   .post-header .skeleton-post-image {
     height: 500px;
