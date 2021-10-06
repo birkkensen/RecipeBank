@@ -4,11 +4,14 @@
     width: 100%;
   }
 
+  // Skeletion loading
+
   .skeleton-wrapper-post { 
     margin-top: 80px;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom: 72px;
   }
 
   .skeleton-post {
@@ -31,6 +34,22 @@
     }
   }
 
+// Header content
+
+&__title {
+  font-size: 48px;
+  font-size: 4.8rem;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  @media screen and (max-width: $mq-phone) {
+    font-size: 35px;
+  }
+}
+
+
+
+
   &__category {
     font-size: 14px;
     font-size: 1.4rem;
@@ -43,15 +62,6 @@
     border-radius: 20px; 
     }
 
-  &__title {
-    font-size: 48px;
-    font-size: 4.8rem;
-    font-weight: 400;
-    margin-bottom: 10px;
-    @media screen and (max-width: $mq-phone) {
-      font-size: 35px;
-    }
-  }
 
   &__social-media {
     display: flex;
@@ -89,6 +99,7 @@
   a:visited {
     color: $blue-color;
   }
+
 
   .unordered-list {
     flex: 0 0 auto;

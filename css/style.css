@@ -2,7 +2,8 @@
 .wrapper-lg {
   width: 80vw;
   max-width: 1240px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (max-width: 991px) {
@@ -65,128 +66,175 @@ nav ul a:hover {
 }
 
 nav .logo h1 {
-  color: #0D0D0D;
-  font-size: 34px;
-  font-size: 3.4rem;
-  font-weight: 400;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 80px;
-  padding-bottom: 50px;
-  padding-top: 15px;
+  color: #404E59;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   position: relative;
+  display: inline-block;
 }
 
-@media screen and (max-width: 767px) {
-  .header {
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-  }
-}
-
-.header::after {
-  bottom: 0px;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
+nav .logo h1::after {
+  -webkit-transition: width 0.3s ease, left 0.3s ease;
+  transition: width 0.3s ease, left 0.3s ease;
   position: absolute;
-  content: '';
   display: block;
-  margin: auto;
-  height: 3px;
-  width: 0px;
-  -webkit-animation: line 3s ease-in-out forwards;
-          animation: line 3s ease-in-out forwards;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #404E59;
+  bottom: 0;
+  left: 50%;
 }
 
-@-webkit-keyframes line {
-  to {
-    width: 75%;
-    background-color: #404E59;
+nav .logo h1:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+nav .svg {
+  width: 300px;
+}
+
+@media screen and (max-width: 450px) {
+  nav .svg {
+    width: 250px;
   }
 }
 
-@keyframes line {
-  to {
-    width: 75%;
-    background-color: #404E59;
-  }
+.svg {
+  -webkit-animation: fill-black 2s ease forwards 2s;
+          animation: fill-black 2s ease forwards 2s;
 }
 
-.header .header-svg {
-  -webkit-animation: fill .5s ease forwards 2s;
-          animation: fill .5s ease forwards 2s;
-  width: 353px;
-  height: 81px;
-}
-
-@media screen and (max-width: 576px) {
-  .header .header-svg {
-    width: 200px;
-  }
-}
-
-.header .header-svg path:nth-child(1) {
-  stroke-dasharray: 349;
-  stroke-dashoffset: 349;
+.svg path:nth-child(1) {
+  stroke-dasharray: 203;
+  stroke-dashoffset: 203;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(2) {
-  stroke-dasharray: 109;
-  stroke-dashoffset: 109;
+.svg path:nth-child(2) {
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(3) {
-  stroke-dasharray: 121;
-  stroke-dashoffset: 121;
+.svg path:nth-child(3) {
+  stroke-dasharray: 219;
+  stroke-dashoffset: 219;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(4) {
-  stroke-dasharray: 253;
-  stroke-dashoffset: 253;
+.svg path:nth-child(4) {
+  stroke-dasharray: 228;
+  stroke-dashoffset: 228;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(5) {
-  stroke-dasharray: 191;
-  stroke-dashoffset: 191;
+.svg path:nth-child(5) {
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(6) {
-  stroke-dasharray: 349;
-  stroke-dashoffset: 349;
+.svg path:nth-child(6) {
+  stroke-dasharray: 134;
+  stroke-dashoffset: 134;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(7) {
-  stroke-dasharray: 131;
-  stroke-dashoffset: 131;
+.svg path:nth-child(7) {
+  stroke-dasharray: 243;
+  stroke-dashoffset: 243;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(8) {
-  stroke-dasharray: 218;
-  stroke-dashoffset: 218;
+.svg path:nth-child(8) {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
 
-.header .header-svg path:nth-child(9) {
-  stroke-dasharray: 340;
-  stroke-dashoffset: 340;
+.svg path:nth-child(9) {
+  stroke-dasharray: 134;
+  stroke-dashoffset: 134;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(10) {
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(11) {
+  stroke-dasharray: 316;
+  stroke-dashoffset: 316;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(12) {
+  stroke-dasharray: 185;
+  stroke-dashoffset: 185;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(13) {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(14) {
+  stroke-dasharray: 182;
+  stroke-dashoffset: 182;
+  -webkit-animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+          animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+
+.svg path:nth-child(15) {
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  -webkit-animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+          animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+
+.svg path:nth-child(16) {
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  -webkit-animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+          animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+
+.svg path:nth-child(17) {
+  stroke-dasharray: 276;
+  stroke-dashoffset: 276;
+  -webkit-animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+          animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+
+.svg path:nth-child(18) {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  -webkit-animation: line-anim 2s ease forwards;
+          animation: line-anim 2s ease forwards;
+}
+
+.svg path:nth-child(19) {
+  stroke-dasharray: 185;
+  stroke-dashoffset: 185;
   -webkit-animation: line-anim 2s ease forwards;
           animation: line-anim 2s ease forwards;
 }
@@ -203,7 +251,7 @@ nav .logo h1 {
   }
 }
 
-@-webkit-keyframes fill {
+@-webkit-keyframes fill-black {
   from {
     fill: transparent;
   }
@@ -212,12 +260,46 @@ nav .logo h1 {
   }
 }
 
-@keyframes fill {
+@keyframes fill-black {
   from {
     fill: transparent;
   }
   to {
     fill: #0D0D0D;
+  }
+}
+
+@-webkit-keyframes fill-red {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #ff4d57;
+  }
+}
+
+@keyframes fill-red {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #ff4d57;
+  }
+}
+
+main {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 767px) {
+  main {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main {
+    margin-top: 20px;
   }
 }
 
@@ -244,6 +326,7 @@ nav .logo h1 {
   border: 1px solid #E1E6F9;
   padding: 2px;
   border-radius: 100px;
+  opacity: 0;
 }
 
 .filter__clearBtn {
@@ -635,6 +718,7 @@ nav .logo h1 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 72px;
 }
 
 .post-header .skeleton-post {
@@ -668,6 +752,20 @@ nav .logo h1 {
   }
 }
 
+.post-header__title {
+  font-size: 48px;
+  font-size: 4.8rem;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .post-header__title {
+    font-size: 35px;
+  }
+}
+
 .post-header__category {
   font-size: 14px;
   font-size: 1.4rem;
@@ -678,19 +776,6 @@ nav .logo h1 {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 20px;
-}
-
-.post-header__title {
-  font-size: 48px;
-  font-size: 4.8rem;
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-
-@media screen and (max-width: 576px) {
-  .post-header__title {
-    font-size: 35px;
-  }
 }
 
 .post-header__social-media {
@@ -940,6 +1025,12 @@ footer .form-wrapper a {
   text-decoration: none;
   font-weight: 600;
   line-height: 180%;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+footer .form-wrapper a:hover {
+  background-color: rgba(255, 77, 87, 0.9);
 }
 
 footer .social-media a i {
@@ -947,6 +1038,10 @@ footer .social-media a i {
   font-size: 2.4rem;
   margin-left: 10px;
   color: #ff4d57;
+}
+
+footer .social-media a i:hover {
+  color: rgba(255, 77, 87, 0.9);
 }
 
 * {

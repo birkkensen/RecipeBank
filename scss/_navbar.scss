@@ -30,10 +30,165 @@ nav {
       }
     }
   }
-  .logo h1 {
-    color: $black-color;
-    font-size: 34px;
-    font-size: 3.4rem;
-    font-weight: 400;
+
+  .logo{
+
+    h1 {
+      color: $gray-color;
+      // text-decoration: underline;
+      transition: all .2s ease-in-out;
+      position: relative;
+      display: inline-block;
+      // padding: 15px 20px;
+    }
+    h1::after {
+      transition: width 0.3s ease, left 0.3s ease;
+      position: absolute;
+      display: block;
+      content: '';
+      width: 0;
+      height: 2px;
+      background-color: $gray-color;
+      bottom: 0;
+      left: 50%;
+    }
+
+    h1:hover:after {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+
+  .svg {
+    width: 300px;
+  }
+  @media screen and (max-width: 450px) {
+    .svg {
+      width: 250px;
+    }
   }
 }
+
+.svg {
+  animation: fill-black 2s ease forwards 2s;
+}
+
+.svg path:nth-child(1) { 
+  stroke-dasharray: 203;
+  stroke-dashoffset: 203;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(2) { 
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(3) { 
+  stroke-dasharray: 219;
+  stroke-dashoffset: 219;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(4) { 
+  stroke-dasharray: 228;
+  stroke-dashoffset: 228;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(5) { 
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(6) { 
+  stroke-dasharray: 134;
+  stroke-dashoffset: 134;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(7) { 
+  stroke-dasharray: 243;
+  stroke-dashoffset: 243;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(8) { 
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(9) { 
+  stroke-dasharray: 134;
+  stroke-dashoffset: 134;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(10) { 
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(11) { 
+  stroke-dasharray: 316;
+  stroke-dashoffset: 316;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(12) { 
+  stroke-dasharray: 185;
+  stroke-dashoffset: 185;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(13) { 
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(14) { 
+  stroke-dasharray: 182;
+  stroke-dashoffset: 182;
+  animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+.svg path:nth-child(15) { 
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+.svg path:nth-child(16) { 
+  stroke-dasharray: 221;
+  stroke-dashoffset: 221;
+  animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+}
+.svg path:nth-child(17) { 
+  stroke-dasharray: 276;
+  stroke-dashoffset: 276;
+  animation: line-anim 2s ease forwards, fill-red 1s ease forwards 2s;
+  // animation: fill-red 2s ease forwards 2s;
+  
+}
+.svg path:nth-child(18) { 
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: line-anim 2s ease forwards;
+}
+.svg path:nth-child(19) { 
+  stroke-dasharray: 185;
+  stroke-dashoffset: 185;
+  animation: line-anim 2s ease forwards;
+}
+@keyframes line-anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+  @keyframes fill-black {
+    from {
+      fill: transparent
+    }
+    to {
+      fill: $black-color;
+    }
+  }
+  @keyframes fill-red {
+    from {
+      fill: transparent
+    }
+    to {
+      fill: $red-ish-color;
+    }
+  }

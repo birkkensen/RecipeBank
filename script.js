@@ -1,29 +1,11 @@
 let featuredPost = []
 let posts = []
 
-// let options = {
-//   threshold: 0.2
-// }
 
-// let observer = new IntersectionObserver(function (entries) {
-//   for (let i = 0; i < entries.length; i++) {
-//     if (entries[i].isIntersecting) {
-//       entries[i].target.classList.add('been-in-view');
-//      } 
-//   }
-// }, options);
-
-// function startObserver() {
-//  let target = document.querySelectorAll('.article-wrapper');
-//   for (let i = 0; i < target.length; i++) {
-//    observer.observe(target[i]);
-//   }
-// }
 
 var populatePost = (post) => {
   const myDate = post.date;
   document.querySelector('.post-header').innerHTML = `
-  
   <h3 class="post-header__title">${post.title}</h3>
   <p class="post-header__category">${post.category}</p>
   <div class="post-header__social-media">
@@ -96,34 +78,10 @@ async function getCategories() {
   return data;
 }
 
-// getCategories()
-
-
-// var getCategories = () => {
-//   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/categories')
-//   .then(response => response.json())
-//   .then(data => {
-//     for (i = 1; i < data.length; i++) {
-//       createCategorieButtons(data[i])
-//     }
-//   })
-//   .then(() => {
-//     setTimeout(function() {
-//     let allCategories = document.querySelectorAll('.category-btn')
-//     allCategories.forEach(item => item.classList.add('show'))
-//   }, 100)
-// })
-//   .catch((error) => {
-//     console.log('Error', error);
-//   })
-// }
-
-
-
 
 var createCategorieButtons = (data) => {
   container = document.querySelector('.filter__categories');
-  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategorie(event)">${data.name}</button>`
+  container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategory(event)">${data.name}</button>`
 }
 
 var filterCategories = (filter) => {
@@ -140,7 +98,7 @@ var filterCategories = (filter) => {
   }
 }
 
-var activeCategorie = (e) => {
+var activeCategory = (e) => {
   var elems = document.querySelectorAll(".active");
   [].forEach.call(elems, function(el) {
     el.classList.remove("active");
@@ -167,9 +125,11 @@ var getPosts = () => {
     })
     .then(() => {
       setTimeout(function() {
-      let allCategories = document.querySelectorAll('.category-btn')
-      allCategories.forEach(item => item.classList.add('show'))
-    }, 100)
+      let allCategories = document.querySelectorAll('.category-btn');
+      let input = document.getElementById('form');
+      input.classList.add('show');
+      allCategories.forEach(item => item.classList.add('show'));
+    }, 50)
     })
   })
   .catch((error) => {
@@ -195,6 +155,8 @@ var getPostFromId = () => {
   })
 }
 
+// Format the JSON
+
 var formatPosts = (post) => {
   let formated = {
     title: (post.title) ? post.title.rendered : 'No title',
@@ -211,6 +173,7 @@ var formatPosts = (post) => {
   return formated;
 }
 
+// Create articles on main page
 
 var createFeaturedPost = (post) => {
   const myDate = post.date 
@@ -258,6 +221,8 @@ var createArticle = (post) => {
   `
 }
 
+// Date format
+
 var formatDate = (date) => {
     var d = new Date(date),
         month = (d.getMonth() + 1),
@@ -304,7 +269,29 @@ var formatDate = (date) => {
       default:
         month = 'Undefined'
     }
-    
-    
     return `${day} ${month}, ${year}`;
 }
+
+// let path = document.querySelectorAll('.svg path')
+// for (i = 0; i < path.length; i++) {
+//   console.log(`Letter ${i} is ${path[i].getTotalLength()}`)
+// }
+
+// let options = {
+//   threshold: 0.2
+// }
+
+// let observer = new IntersectionObserver(function (entries) {
+//   for (let i = 0; i < entries.length; i++) {
+//     if (entries[i].isIntersecting) {
+//       entries[i].target.classList.add('been-in-view');
+//      } 
+//   }
+// }, options);
+
+// function startObserver() {
+//  let target = document.querySelectorAll('.article-wrapper');
+//   for (let i = 0; i < target.length; i++) {
+//    observer.observe(target[i]);
+//   }
+// }

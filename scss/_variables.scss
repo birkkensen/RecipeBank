@@ -20,7 +20,8 @@ $mq-large-screens: 1201px;
 .wrapper-lg {
   width: 80vw;
   max-width: 1240px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (max-width: $mq-computer) {
     width: 90vw;
   }
