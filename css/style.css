@@ -940,6 +940,13 @@ main {
   padding-left: 12px;
 }
 
+@media screen and (max-width: 991px) {
+  .post-body .sub-heading {
+    font-size: 22px;
+    font-size: 2.2rem;
+  }
+}
+
 .post-body .sub-heading strong {
   font-weight: normal;
 }

@@ -167,6 +167,11 @@
     font-size: 1.8rem;
     padding-left: 12px;
 
+    @media screen and (max-width: $mq-computer) {
+      font-size: 22px;
+      font-size: 2.2rem;
+    }
+
     strong {
       font-weight: normal;
     }
