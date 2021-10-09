@@ -1,7 +1,6 @@
 
 let featuredPost = []
 let posts = []
-let count = 0;
 
 var populatePost = (post) => {
   const myDate = post.date;
@@ -42,6 +41,7 @@ var filterPost = () => {
   let txtValue;
   let articleTitle;
   let filter = input.value.toUpperCase();
+  let elems = document.querySelectorAll(".active");
 
   for (i = 0; i < posts.length; i++) {
     articleTitle = posts[i].title.rendered;
@@ -54,7 +54,9 @@ var filterPost = () => {
           createArticle(formatPosts(posts[i]));
         } 
       } else {
-        document.getElementById('clearBtn').style.opacity = '1'
+        document.getElementById('clearBtn').style.opacity = '1';
+        elems.forEach(item => item.classList.remove('active'))
+        document.getElementById('all-categories').classList.add('active')
         createArticle(formatPosts(posts[i]));
       }
     }

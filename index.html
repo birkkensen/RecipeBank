@@ -97,7 +97,8 @@
   <main class="wrapper-lg">
     <div id="filter" class="filter">
       <div class="filter__categories">
-        <button class="category-btn active" onclick="filterCategories('1'), activeCategory(event)">Alla</button>
+        <button id="all-categories" class="category-btn active"
+          onclick="filterCategories('1'), activeCategory(event)">Alla</button>
       </div>
       <form class="filter__form" id="form">
         <input type="text" class="filter__input" id="filter-search" onkeyup="filterPost()"
