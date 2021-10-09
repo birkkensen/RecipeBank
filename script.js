@@ -1,6 +1,7 @@
 
 let featuredPost = []
 let posts = []
+let count = 0;
 
 var populatePost = (post) => {
   const myDate = post.date;
@@ -47,11 +48,13 @@ var filterPost = () => {
     txtValue = articleTitle;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       if (filter === '') {
+        document.getElementById('clearBtn').style.opacity = '0'
         createFeaturedPost(formatPosts(featuredPost));
         for (i = 1; i < posts.length; i++) {
           createArticle(formatPosts(posts[i]));
         } 
       } else {
+        document.getElementById('clearBtn').style.opacity = '1'
         createArticle(formatPosts(posts[i]));
       }
     }
@@ -66,7 +69,7 @@ var filterCategories = (filter) => {
       for (i = 1; i < posts.length; i++) {
         createArticle(formatPosts(posts[i]));
       } 
-    } else if(posts[i].categories == filter) {
+    } else if(filter.includes(posts[i].categories) || filter.includes(posts[i].categories[0]) || filter.includes(posts[i].categories[1])) {
       createArticle(formatPosts(posts[i]));
     } 
   }
@@ -116,9 +119,14 @@ async function getCategories() {
 
 var createCategorieButtons = (data) => {
   container = document.querySelector('.filter__categories');
+  // console.log(data);
   container.innerHTML += `<button class="category-btn" onclick="filterCategories('${data.id}'), activeCategory(event)">${data.name}</button>`;
 }
 
+var clearInputField = () => {
+  input = document.getElementById('filter-search');
+  input.value = '';
+}
 
 
 var getPosts = () => {
@@ -130,6 +138,7 @@ var getPosts = () => {
     createFeaturedPost(formatPosts(data[0]));
     for (let i = 1; i < data.length; i++) {
       createArticle(formatPosts(data[i]));
+      // console.log(data[i])
     }
   })
   .then(() => {
@@ -271,10 +280,10 @@ var formatDate = (date) => {
     return `${day} ${month}, ${year}`;
 }
 
-let path = document.querySelectorAll('.svg path')
-for (i = 0; i < path.length; i++) {
-  console.log(`Letter ${i} is ${path[i].getTotalLength()}`)
-}
+// let path = document.querySelectorAll('.svg path')
+// for (i = 0; i < path.length; i++) {
+//   console.log(`Letter ${i} is ${path[i].getTotalLength()}`)
+// }
 
 // let options = {
 //   threshold: 0.2

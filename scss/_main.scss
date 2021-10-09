@@ -32,6 +32,8 @@ main {
       margin-right: 10px;
       height: 20px;
       align-self: center;
+      transition: opacity .2s ease-in-out;
+      opacity: 0;
 
       img {
        width: 20px;
@@ -111,6 +113,7 @@ main {
     border: $light-gray-color 1.5px solid;
     color: $red-ish-color;
   }
+  
   .show {
     transition: all .2s ease-in;
     opacity: 1;

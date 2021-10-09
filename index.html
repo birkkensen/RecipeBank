@@ -95,19 +95,15 @@
   </nav>
 
   <main class="wrapper-lg">
-
-    <!-- <div class="header">
-      
-    </div> -->
-
-    <div class="filter">
+    <div id="filter" class="filter">
       <div class="filter__categories">
         <button class="category-btn active" onclick="filterCategories('1'), activeCategory(event)">Alla</button>
       </div>
       <form class="filter__form" id="form">
         <input type="text" class="filter__input" id="filter-search" onkeyup="filterPost()"
           placeholder="Filter search...">
-        <button class="filter__clearBtn" type="reset"><img src="./images/xmark-solid.svg" alt="Clear-text"></i></button>
+        <button class="filter__clearBtn" id="clearBtn" type="reset" onclick="clearInputField(), filterPost()"><img
+            src="./images/xmark-solid.svg" alt="Clear-text"></i></button>
       </form>
     </div>
     <div class="flex-row" id="row">
