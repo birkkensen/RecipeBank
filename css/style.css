@@ -1063,12 +1063,6 @@ footer .form-wrapper input {
   color: #404E59;
 }
 
-@media screen and (max-width: 576px) {
-  footer .form-wrapper input {
-    width: 120px;
-  }
-}
-
 footer .form-wrapper input:focus {
   outline: none;
 }
@@ -1078,7 +1072,7 @@ footer .form-wrapper .submit {
   background: #ff4d57;
   color: white;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 5px 10px;
   text-decoration: none;
   font-weight: 600;
   line-height: 180%;

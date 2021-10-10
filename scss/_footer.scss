@@ -35,14 +35,11 @@ footer {
     flex-grow: 2;
     font-size: 14px;
     font-size: 1.4rem;
-    border:none;
+    border: none;
     padding: 10px;
     border-radius: 100px;
     font-weight: 600;
     color: $gray-color;
-    @media screen and (max-width: $mq-phone) {
-      width: 120px;
-    }
   }
   
   input:focus {
@@ -55,7 +52,7 @@ footer {
     background: $red-ish-color;
     color:white;
     border-radius: 20px;
-    padding: 5px 20px;
+    padding: 5px 10px;
     text-decoration: none;
     font-weight: 600;
     line-height: 180%;
