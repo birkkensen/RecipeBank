@@ -24,8 +24,7 @@ footer {
     }
   
   form {
-    display:flex;
-    flex-direction:row;
+    display: flex;
     border: 1px solid $light-gray-color;
     padding: 2px;
     border-radius: 100px;
@@ -51,7 +50,7 @@ footer {
     
   }
   
-  a {
+  .submit {
     border: 1px solid $red-ish-color;
     background: $red-ish-color;
     color:white;
@@ -61,6 +60,7 @@ footer {
     font-weight: 600;
     line-height: 180%;
     transition: background-color .2s ease;
+    cursor: pointer;
 
     &:hover {
       background-color: rgba($color: $red-ish-color, $alpha: .9);

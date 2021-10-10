@@ -67,7 +67,7 @@ var filterCategories = (filter) => {
   document.getElementById('row').innerHTML = '';
   for (i = 0; i < posts.length; i++) {
     if (filter === '1') {
-      createFeaturedPost(formatPosts(posts[0]));
+      createFeaturedPost(formatPosts(featuredPost));
       for (i = 1; i < posts.length; i++) {
         createArticle(formatPosts(posts[i]));
       } 
@@ -95,7 +95,6 @@ var getPostFromId = () => {
   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
-    featuredPost = data[0]
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === id) {
         populatePost(formatPosts(data[i]));
@@ -130,17 +129,28 @@ var clearInputField = () => {
   input.value = '';
 }
 
+const getFeaturedPost = (post) => {
+  for (i = 0; i < post.length; i++) {
+    if(post[i].sticky == true) {
+      featuredPost = post[i];
+      const index = post.indexOf(post[i]);
+        if (index > -1) {
+          post.splice(index, 1);
+        }
+    }
+  }
+}
+
 
 var getPosts = () => {
   fetch('http://birk.josefcarlsson.com/wp-json/wp/v2/posts?_embed')
   .then(response => response.json())
   .then(data => {
-    featuredPost = data[0];
     posts = data;
-    createFeaturedPost(formatPosts(data[0]));
-    for (let i = 1; i < data.length; i++) {
+    getFeaturedPost(data)
+    createFeaturedPost(formatPosts(featuredPost));
+    for (let i = 0; i < data.length; i++) {
       createArticle(formatPosts(data[i]));
-      // console.log(data[i])
     }
   })
   .then(() => {
@@ -217,7 +227,7 @@ var createArticle = (post) => {
   <div class="article">
     <a class="article-anchor" href="/recipe/?${post.slug}&id=${post.id}">
       <div class="article-image">
-        <img src="${post.image}" alt="">
+        <img loading="lazy" src="${post.image}" alt="">
       </div>
       <div class="article-body">
         <p class="article-category">${post.category}</p>

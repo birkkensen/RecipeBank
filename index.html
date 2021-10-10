@@ -163,11 +163,23 @@
   <footer class="wrapper-lg">
     <div class="form-wrapper">
       <h3>Subscribe to my monthly newsletter!</h3>
-      <form>
-        <input type="text" placeholder="Email adress">
-        <a href="mailto:birk.kensen@gmail.com">Subscribe</a>
+      <form target="_blank" method="post" action="https://birk.josefcarlsson.com/?na=s">
+        <input type="email" name="ne" value="" placeholder="Email adress" required>
+        <input class="submit" type="submit" value="Subscribe"></input>
       </form>
     </div>
+
+    <!-- <div class="tnp tnp-subscription">
+      <form method="post" action="https://birk.josefcarlsson.com/?na=s">
+
+        <input type="hidden" name="nlang" value="">
+        <div class="tnp-field tnp-field-email"><label for="tnp-email">Email</label>
+          <input class="tnp-email" type="email" name="ne" value="" required>
+        </div>
+        <div class="tnp-field tnp-field-button"><input class="tnp-submit" type="submit" value="Prenumerera">
+        </div>
+      </form>
+    </div> -->
     <div class="social-media">
       <a href="http://instagram.com/birkkensen" target="_blank" rel="noopener noreferrer"><i
           class="fab fa-instagram"></i></a>
@@ -178,7 +190,6 @@
     </div>
   </footer>
   <script src="./script.js"></script>
-
 </body>
 
 </html>

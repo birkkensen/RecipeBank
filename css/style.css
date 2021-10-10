@@ -1045,10 +1045,6 @@ footer .form-wrapper form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   border: 1px solid #E1E6F9;
   padding: 2px;
   border-radius: 100px;
@@ -1077,7 +1073,7 @@ footer .form-wrapper input:focus {
   outline: none;
 }
 
-footer .form-wrapper a {
+footer .form-wrapper .submit {
   border: 1px solid #ff4d57;
   background: #ff4d57;
   color: white;
@@ -1088,9 +1084,10 @@ footer .form-wrapper a {
   line-height: 180%;
   -webkit-transition: background-color .2s ease;
   transition: background-color .2s ease;
+  cursor: pointer;
 }
 
-footer .form-wrapper a:hover {
+footer .form-wrapper .submit:hover {
   background-color: rgba(255, 77, 87, 0.9);
 }
 
