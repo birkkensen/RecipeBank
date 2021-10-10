@@ -208,6 +208,7 @@ var createFeaturedPost = (post) => {
         </div>
           <div class="article-body featured-body">
           <p class="article-category">${post.category}</p>
+          <p class="article-category">Featured recipe</p>
             <h2 class="article-title featured-title">${post.title}</h2>
             <div class="featured-description">${post.summary}</div>
             <p class="article-published">${formatDate(myDate)}</p>
