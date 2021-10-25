@@ -20,9 +20,9 @@ main {
     display:flex;
     flex-direction:row;
     border: 1px solid $light-gray-color;
-    padding: 2px;
     border-radius: 100px;
     opacity: 0;
+    height: 35px;
     }
 
     &__clearBtn {
@@ -47,7 +47,7 @@ main {
 
     &__input {
       font-family: 'Avenir Next';
-      padding: 7px 20px;
+      padding: 10px 20px;
       outline: none;
       // border: $light-gray-color 1px solid;
       border-radius: 20px;

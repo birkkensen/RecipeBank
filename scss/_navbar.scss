@@ -9,9 +9,9 @@ nav {
   }
 
   ul {
-    display: none;
+    display: flex;
     list-style: none;
-    @media screen and (max-width: $mq-tablet) {
+    @media screen and (max-width: $mq-phone) {
       display: none;
     }
 

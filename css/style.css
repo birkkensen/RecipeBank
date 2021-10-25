@@ -38,11 +38,13 @@ nav a {
 }
 
 nav ul {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   list-style: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 576px) {
   nav ul {
     display: none;
   }
@@ -331,9 +333,9 @@ main {
       -ms-flex-direction: row;
           flex-direction: row;
   border: 1px solid #E1E6F9;
-  padding: 2px;
   border-radius: 100px;
   opacity: 0;
+  height: 35px;
 }
 
 .filter__clearBtn {
@@ -362,7 +364,7 @@ main {
 
 .filter__input {
   font-family: 'Avenir Next';
-  padding: 7px 20px;
+  padding: 10px 20px;
   outline: none;
   border-radius: 20px;
   -webkit-transition: all .3s ease-in-out;
@@ -1025,23 +1027,12 @@ footer {
   margin: auto;
 }
 
-@media screen and (max-width: 471px) {
-  footer {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  footer .form-wrapper h3 {
-    text-align: center;
-  }
-}
-
-footer .form-wrapper h3 {
+footer h2 {
   margin-bottom: 20px;
   color: #404E59;
 }
 
-footer .form-wrapper form {
+footer .mc-field-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1050,7 +1041,7 @@ footer .form-wrapper form {
   border-radius: 100px;
 }
 
-footer .form-wrapper input {
+footer .mc-field-group .required {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
@@ -1063,11 +1054,11 @@ footer .form-wrapper input {
   color: #404E59;
 }
 
-footer .form-wrapper input:focus {
+footer .mc-field-group .required:focus {
   outline: none;
 }
 
-footer .form-wrapper .submit {
+footer .mc-field-group #mc-embedded-subscribe {
   border: 1px solid #ff4d57;
   background: #ff4d57;
   color: white;
@@ -1076,24 +1067,80 @@ footer .form-wrapper .submit {
   text-decoration: none;
   font-weight: 600;
   line-height: 180%;
-  -webkit-transition: background-color .2s ease;
-  transition: background-color .2s ease;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
   cursor: pointer;
 }
 
-footer .form-wrapper .submit:hover {
+footer .mc-field-group #mc-embedded-subscribe:hover {
   background-color: rgba(255, 77, 87, 0.9);
 }
 
-footer .social-media a i {
+.social-media a i {
   font-size: 24px;
   font-size: 2.4rem;
   margin-left: 10px;
   color: #ff4d57;
 }
 
-footer .social-media a i:hover {
+.social-media a i:hover {
   color: rgba(255, 77, 87, 0.9);
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 64px;
+  font-size: 6.4rem;
+}
+
+.gallery-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 72px;
+  margin-top: 72px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4px;
+  max-width: 1240px;
+}
+
+.gallery-row figure {
+  margin-bottom: 7vw;
+  overflow: hidden;
+}
+
+.gallery-row figure img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-row a {
+  margin-bottom: 7vw;
+  -webkit-box-flex: 25%;
+      -ms-flex: 25%;
+          flex: 25%;
+  overflow: hidden;
+  margin: 10px;
+  position: relative;
+}
+
+.gallery-row a img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-row a h2 {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-decoration: underline;
+  color: white;
 }
 
 * {
@@ -1116,4 +1163,3 @@ body {
   height: auto;
   position: relative;
 }
-/*# sourceMappingURL=style.css.map */
