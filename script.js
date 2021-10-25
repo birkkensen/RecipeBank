@@ -80,7 +80,8 @@ var filterCategories = (filter) => {
     } else if (
       filter.includes(posts[i].categories) ||
       filter.includes(posts[i].categories[0]) ||
-      filter.includes(posts[i].categories[1])
+      filter.includes(posts[i].categories[1]) ||
+      filter.includes(posts[i].categories[2])
     ) {
       createArticle(formatPosts(posts[i]));
     }
