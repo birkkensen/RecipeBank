@@ -6,8 +6,7 @@ Hyper Island - The Fundamentals
 
 ### :open_file_folder: The Brief:
 
-Create a project of your own choosing, explore the code and integrate a little javascript. A secondary objective was to fetch posts from a data source e.g. JSON file or WordPress CMS.
-
+Create a project of our own choosing, explore the code and integrate a little javascript. A secondary objective was to fetch posts from a data source e.g. JSON file or for example WordPress.
 
 
 ### :hourglass_flowing_sand: Time spent / Deadline:
